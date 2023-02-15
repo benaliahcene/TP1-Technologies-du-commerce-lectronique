@@ -1,0 +1,13 @@
+ProductId,Gender,Category,SubCategory,ProductType,Colour,Usage,ProductTitle,Image,ImageURL,Price
+46831,Boys,Apparel,Topwear,Shirts,Pink,Casual,Gini and Jony Boys Pink Shirt,46831.jpg,http://assets.myntassets.com/v1/images/style/properties/943d9b272c042d8b06ee6b1d277de5be_images.jpg,30
+30720,Boys,Apparel,Topwear,Kurtas,Blue,Ethnic,Fabindia Boys Printed Blue Kurta,30720.jpg,http://assets.myntassets.com/v1/images/style/properties/e95357480c6acea8e7bcdce602a0a532_images.jpg,10
+40974,Boys,Apparel,Topwear,Tshirts,Green,Casual,Gini and Jony Boys United Green T-shirt,40974.jpg,http://assets.myntassets.com/v1/images/style/properties/c534bd1e6aef81fafe5fddf41bff6401_images.jpg,15
+42002,Girls,Apparel,Bottomwear,Capris,Pink,Casual,Gini and Jony Girls Kinky Pink Capris,42002.jpg,http://assets.myntassets.com/v1/images/style/properties/d07f3c84fe3df82e98b46ba9a55cc866_images.jpg,15.5
+8359,Girls,Apparel,Topwear,Tshirts,Pink,Casual,Doodle Girl's Princess Cute Little Pink Kidswear,8359.jpg,http://assets.myntassets.com/v1/images/style/properties/705333ff633393a22cb5c229128afcc2_images.jpg,30.85
+40972,Girls,Apparel,Topwear,Tops,White,Casual,Palm Tree Girls Knits White Tops,40972.jpg,http://assets.myntassets.com/v1/images/style/properties/6ad4e27d85073205cafdd1edbd1d86f6_images.jpg,55.75
+23500,Men,Footwear,Shoes,Sports Shoes,White,Sports,FILA Men Hostile White Sports Shoes,23500.jpg,http://assets.myntassets.com/v1/images/style/properties/0734fd1f8aea4117ff2f3810a8d7d30b_images.jpg,49.99
+41455,Men,Footwear,Sandal,Sandals,Grey,Casual,Lee Cooper Men Grey Sandals,41455.jpg,http://assets.myntassets.com/v1/images/style/properties/788847bb37bf3ba404eeebcb290c8746_images.jpg,19.99
+7364,Men,Footwear,Shoes,Casual Shoes,Brown,Casual,Red Tape Men's Brown casual Shoe,7364.jpg,http://assets.myntassets.com/v1/images/style/properties/e1f82da932e688fe0f59740369c59b97_images.jpg,20
+5319,Women,Footwear,Shoes,Sports Shoes,White,Sports,ADIDAS Women's Duramo Luxury White Shoe,5319.jpg,http://assets.myntassets.com/v1/images/style/properties/54a68221353b667c1aa1c17631a6e534_images.jpg,15.5
+54118,Women,Footwear,Shoes,Heels,Black,Casual,Rocia Women Black Flats,54118.jpg,http://assets.myntassets.com/v1/images/style/properties/8d6fd53f28e010658cdf5c14c43d0cb0_images.jpg,10
+49608,Women,Footwear,Shoes,Casual Shoes,Red,Casual,Catwalk Women Red Shoes,49608.jpg,http://assets.myntassets.com/v1/images/style/properties/5055777a92b6b46240d58dd31eb46ba8_images.jpg,30

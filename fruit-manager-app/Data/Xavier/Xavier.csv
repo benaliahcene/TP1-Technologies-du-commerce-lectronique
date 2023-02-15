@@ -1,0 +1,13 @@
+ProductId,Gender,Category,SubCategory,ProductType,Colour,Usage,ProductTitle,Image,ImageURL,Price
+40956,Boys,Apparel,Topwear,Tshirts,Red,Casual,Gini and Jony Boys Comics Red T-shirt,40956.jpg,http://assets.myntassets.com/v1/images/style/properties/a913999991c21e8233f1d5fd1ab20802_images.jpg,10
+48250,Boys,Apparel,Topwear,Tshirts,Red,Casual,The Amazing Spiderman Boys Red T-Shirt,48250.jpg,http://assets.myntassets.com/v1/images/style/properties/edc6d691eeab51c01264064be592e390_images.jpg,20
+37524,Boys,Apparel,Topwear,Rompers,Blue,Casual,Madagascar3 Infant Boys Light Blue Snapsuit Romper,37524.jpg,http://assets.myntassets.com/v1/images/style/properties/1ed5e3016f7bf021add2fd67ac735d80_images.jpg,24.99
+35448,Girls,Apparel,Topwear,Tops,Red,Casual,Doodle Girls Printed Red Top,35448.jpg,http://assets.myntassets.com/v1/images/style/properties/bdcb051154afdf6da0a6b1010e116c35_images.jpg,15.5
+2701,Girls,Apparel,Topwear,Tops,Yellow,Casual,Disney Kids Girl's Yellow Daisy Kidswear,2701.jpg,http://assets.myntassets.com/v1/images/style/properties/9f0369e7d1bb5beabf1071dcd6f15867_images.jpg,30.85
+39835,Girls,Apparel,Topwear,Tops,Peach,Casual,Gini and Jony Girls Printed Peach Top,39835.jpg,http://assets.myntassets.com/v1/images/style/properties/a7e6fca57d133337f6e76e3b5e74fd20_images.jpg,20
+11947,Men,Footwear,Sandal,Sandals,Olive,Casual,Ganuchi Men Casual Olive Sandals,11947.jpg,http://assets.myntassets.com/v1/images/style/properties/464879391de4e1a7b881dad3b7bd83a8_images.jpg,24.99
+3790,Men,Footwear,Shoes,Casual Shoes,Black,Casual,Converse Men's AS Canvas HI Black Shoe,3790.jpg,http://assets.myntassets.com/v1/images/style/properties/2cbba1cd60b44011accb7c099a859ec4_images.jpg,55.75
+33848,Men,Footwear,Shoes,Casual Shoes,Brown,Casual,Puma Men Drift Cat Brown Shoes,33848.jpg,http://assets.myntassets.com/v1/images/style/properties/Puma-Men-Drift-Cat-Brown-Shoes_b37c89652031b205bcd19c36d6c686bd_images.jpg,20
+44725,Women,Footwear,Flip Flops,Flip Flops,Orange,Casual,Lotto Women Coral Elegant Flip Flops,44725.jpg,http://assets.myntassets.com/v1/images/style/properties/839c627c80dba9ac4412db3f35a52bb7_images.jpg,30.85
+16995,Women,Footwear,Sandal,Sports Sandals,Black,Casual,Rocia Women Casual Black Sandal,16995.jpg,http://assets.myntassets.com/v1/images/style/properties/2e68ca2646690a4bf4ed092bf44cc6df_images.jpg,24.99
+13027,Women,Footwear,Shoes,Heels,Gold,Casual,Inc 5 Women Casual Gold Flats,13027.jpg,http://assets.myntassets.com/v1/images/style/properties/9d70af39b13503d1ae27c581dc5e711d_images.jpg,30.85

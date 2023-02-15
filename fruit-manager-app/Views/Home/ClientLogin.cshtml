@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+    ViewBag.Title = ViewBag.Title;
+}
+@model  DemoAspNet.Models.Client;
+
+<h1 class="pb-3">Client - connexion¸</h1>
+
+<form asp-action="ClientPage">
+    <div class="container p-3">
+        <div class="row">
+            <select asp-for="Nom" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Clients</option>
+                <option value="1">Clinet_1</option>
+                <option value="2">Clinet_2</option>
+                <option value="3">Client_3</option>
+                <option value="4">Client_4</option>
+                <option value="5">Client_5</option>
+            </select>
+        </div>
+        <div class="input-group-prepend">
+            <div class="col">
+                <button type="submit" class="btn btn-success w-100 p-3"><i class="bi bi-search"></i>Se connecter</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+ <div class="input-group-prepend">
+    <a href="~/Home/addclient" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left"></i>Créer un nouveau compte</a>
+  </div>
+<div class="input-group-prepend">
+    <a href="~/Home/sellerlogin" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left"></i>Aller a l'interface vendeur</a>
+</div>
+
+
+
+

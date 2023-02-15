@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model DemoAspNet.Models.Product
+
+
+
+
+
+<div class="card mb-2 p-3">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="col">
+                        <img width="100" src="@Model.URLimg">
+                    </div>
+                    <div class="col">
+                        <h3>Informations : </h3>
+                        <b><i class="bi bi-product-fill"></i> Titre :</b> @Model.Title <br />
+                        <b><i class="bi bi-pencil-fill"></i> Pour :</b> @Model.Pour <br />
+                        <b><i class="bi bi-pencil-fill"></i> Vendur :</b> @Model.Vendeur
+                        <b><i class="bi bi-pencil-fill"></i> Prix :</b> @Model.Prix <br />
+                        <b><i class="bi bi-pencil-fill"></i> Usage :</b> @Model.Description <br />
+
+                    </div>
+                    <a href="~/Home/Panier" class="btn btn-warning" role="button"><i class="bi bi-cart"></i> Ajouter au panier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_ClientPage";
+    ViewBag.Title = ViewBag.Title;
+}
+
+@model List<DemoAspNet.Models.Product>
+@using DemoAspNet.Controllers;
+@using DemoAspNet.Models;
+
+
+<h1 class="pb-3">Welcome</h1>
+<div class="d-flex pt-5 mt-5 mb-5">
+    <a href="~/Home/panier" class="btn btn-primary mx-auto w-75" role="button"><i class="bi bi-box-arrow-left"></i> Aller au panier</a>
+</div>
+
+
+<form asp-action="Results">
+    <div class="container">
+        <div class="row">
+            <div class="col"><input @*asp-for="Title" *@type="text" class="form-control" placeholder="Titre ..." /></div>
+            <div class="col"><input @*asp-for="Vendeur"*@ type="text" class="form-control" placeholder="Vendeur ..." /></div>
+            <div class="col"><input @*asp-for="Categorie"*@ type="text" class="form-control" placeholder="Categorie ..." /></div>
+            <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i> Filtrer</button></div>
+        </div>
+    </div>
+</form>
+
+
+<div class="row p-5">
+    @foreach (DemoAspNet.Models.Product product in Model)
+    {
+        <div class="col">
+            <partial name="_Card" model="product" />
+        </div>
+    }
+</div>
+
+
+
+
+@*<div class="pt-5 mt-5 mb-5 border border-blue">
+    <form asp-action="Results">
+        <div class="form-group">
+            <label class="form-label pd-8 fs-4 p-3">Prix maximum</label>
+            <input class="form-control" type="number"/>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label pd-8 fs-4 p-3">Prix minimum</label>
+            <input  class="form-control" type="number" />
+        </div>
+        <div class="form-group">
+            <label class="form-label pd-8 fs-4 p-3" >Catégorie</label>
+            <select  class="form-select h-75 d-inline-block" aria-label="Default select example">
+                <option selected>----SELECT----</option>
+                <option value="1">Footwea</option>
+                <option value="2">Appeal</option>
+            </select>
+        </div>
+        <label class="form-label pd-8 fs-4 p-3">Pour</label>
+        <div class="form-check">
+            <input  class="form-check-input" type="radio" name="flexRadioDefault">
+            <label class="form-check-label" > Homme </label>
+        </div>
+        <div class="form-check">
+            <input  class="form-check-input" type="radio" name="flexRadioDefault">
+            <label class="form-check-label" > Femme </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Filtrer</button>
+    </form>
+</div>*@
+
+
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - e-Commerce
+    </div>
+</footer>

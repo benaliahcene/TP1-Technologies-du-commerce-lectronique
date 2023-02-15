@@ -1,0 +1,13 @@
+ProductId,Gender,Category,SubCategory,ProductType,Colour,Usage,ProductTitle,Image,ImageURL,Price
+38249,Boys,Apparel,Topwear,Tshirts,Red,Casual,Ben 10 Boys Red Printed T-shirt,38249.jpg,http://assets.myntassets.com/v1/images/style/properties/91b690cee7977353b5fa29ae56bf22d4_images.jpg,10
+15571,Boys,Apparel,Topwear,Tshirts,Olive,Casual,Chhota Bheem Kids Boys Spare Me TShirt,15571.jpg,http://assets.myntassets.com/v1/images/style/properties/ba3659da8365d5f255ab9b992fec690f_images.jpg,49.99
+39861,Boys,Apparel,Topwear,Tshirts,Green,Casual,Gini and Jony Boys Polo Green T-Shirt,39861.jpg,http://assets.myntassets.com/v1/images/style/properties/f61e63af58565cb07fba8b5d54db3994_images.jpg,55.75
+38766,Girls,Apparel,Bottomwear,Shorts,Pink,Casual,Gini and Jony Girls Pink Shorts,38766.jpg,http://assets.myntassets.com/v1/images/style/properties/9097ddc9c0e1272023976f8e8da00617_images.jpg,30.85
+35448,Girls,Apparel,Topwear,Tops,Red,Casual,Doodle Girls Printed Red Top,35448.jpg,http://assets.myntassets.com/v1/images/style/properties/bdcb051154afdf6da0a6b1010e116c35_images.jpg,15.5,30.85
+24941,Girls,Apparel,Topwear,Tops,Pink,Casual,United Colors of Benetton Kids Girls Pink Top,24941.jpg,http://assets.myntassets.com/v1/images/style/properties/c1a5e415fd0e4f4945aa965729de43c1_images.jpg,15
+40785,Men,Footwear,Flip Flops,Flip Flops,White,Casual,Quiksilver Men White Flip Flops,40785.jpg,http://assets.myntassets.com/v1/images/style/properties/3ac1a2f48ba5767e13a5cb112da62654_images.jpg,15.5
+26553,Men,Footwear,Shoes,Casual Shoes,Blue,Casual,ID Men Blue Shoes,26553.jpg,http://assets.myntassets.com/v1/images/style/properties/a02747a571130ca2d2aa6f491d8b5fc2_images.jpg,15
+45603,Men,Footwear,Shoes,Formal Shoes,Black,Formal,Arrow Men Black Formal Shoes,45603.jpg,http://assets.myntassets.com/v1/images/style/properties/8f3b9f4c5f554e39681567b22985966e_images.jpg,20
+45322,Women,Footwear,Shoes,Heels,Beige,Casual,Cobblerz Women Beige & Blue Wedges,45322.jpg,http://assets.myntassets.com/v1/images/style/properties/04bf5738b8d46cc9a768caf2a35f9451_images.jpg,15.5
+41669,Women,Footwear,Shoes,Heels,Silver,Casual,Catwalk Women Silver Heels,41669.jpg,http://assets.myntassets.com/v1/images/style/properties/a87cc5ed84c4882d76413571787cad2f_images.jpg,10
+7595,Women,Footwear,Shoes,Sports Shoes,Blue,Sports,Nike Women Ten Blue White Shoe,7595.jpg,http://assets.myntassets.com/v1/images/style/properties/b3f3d37c936ee1b487eb6ed3ef399e0b_images.jpg,30.85

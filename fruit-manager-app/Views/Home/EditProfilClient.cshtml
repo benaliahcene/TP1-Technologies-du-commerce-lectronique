@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_ClientPage";
+}
+
+@model DemoAspNet.Models.Client
+
+<h1 class="pb-3">Client - Modifier informations</h1>  
+
+
+<form asp-action="ClientPage">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col"><input asp-for="Nom" type="text" class="form-control" placeholder="Nom ..." /></div>
+            <div class="col"><input asp-for="Prenom" type="text" class="form-control" placeholder="Prénom ..." /></div>
+            <div class="col"><input asp-for="ClientId" type="text" class="form-control" placeholder="Vous ne puvez pas modifier Id --reecrivez-le ..." /></div>
+            <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i>Modifier</button></div>
+        </div>
+    </div>
+</form>
+
+<a href="~/Home/ClinetPage" class="btn btn-primary mx-auto w-100" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
+

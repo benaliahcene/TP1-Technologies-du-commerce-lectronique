@@ -1,0 +1,13 @@
+ProductId,Gender,Category,SubCategory,ProductType,Colour,Usage,ProductTitle,Image,ImageURL,Price
+39855,Boys,Apparel,Topwear,Tshirts,Black,Casual,Gini and Jony Boys Printed Black T-Shirt,39855.jpg,http://assets.myntassets.com/v1/images/style/properties/6fa45d21a0d6194932652bfcaf4c0e2b_images.jpg,20
+35881,Boys,Apparel,Topwear,Tshirts,Blue,Casual,Jungle Book Boys Jungle Friends Blue T-shirt,35881.jpg,http://assets.myntassets.com/v1/images/style/properties/2ea8c6ea0765fca46041647c5ce1c514_images.jpg,10.75
+39859,Boys,Apparel,Topwear,Tshirts,Yellow,Casual,Palm Tree Boys Printed Yellow T-Shirt,39859.jpg,http://assets.myntassets.com/v1/images/style/properties/a3c0711f3d54240e227c7c615d8d46c5_images.jpg,20
+2700,Girls,Apparel,Topwear,Tops,White,Casual,Disney Kids Girl's White Kidswear,2700.jpg,http://assets.myntassets.com/v1/images/style/properties/d2c388bcd6a795e0d0cea56392d352a6_images.jpg,49.99
+18171,Girls,Apparel,Topwear,Tops,Green,Casual,Doodle Kids Girls Ballon Green Top,18171.jpg,http://assets.myntassets.com/v1/images/style/properties/f1dbb13abb1efd3ba19bd4108f1a6703_images.jpg,15.5
+34148,Girls,Apparel,Bottomwear,Skirts,Blue,Casual,Gini and Jony Girls Washed Blue Skirt,34148.jpg,http://assets.myntassets.com/v1/images/style/properties/c90319b0bf114581aa3dc692239a0607_images.jpg,20
+54529,Men,Footwear,Shoes,Casual Shoes,Black,Casual,F Sports Men Black Shoes,54529.jpg,http://assets.myntassets.com/v1/images/style/properties/F-Sports-Men-Black-Shoes_f4920f8c2dd4277191a4468e5acf397d_images.jpg,10
+13072,Men,Footwear,Shoes,Casual Shoes,Black,Casual,Numero Uno Men Black Casual Shoes,13072.jpg,http://assets.myntassets.com/v1/images/style/properties/2fc766a7415035d5855a236326c01366_images.jpg,15
+13080,Men,Footwear,Shoes,Casual Shoes,Black,Casual,Numero Uno Men Black Casual Shoes,13080.jpg,http://assets.myntassets.com/v1/images/style/properties/efef30c05460e90a1e170998dde8f92c_images.jpg,15
+56943,Women,Footwear,Shoes,Flats,Black,Casual,HM Women Black Sandals,56943.jpg,http://assets.myntassets.com/v1/images/style/properties/HM-Women-Black-Sandals_a9da5e1e341b17a3eb061f783c01ca21_images.jpg,49.99
+45324,Women,Footwear,Shoes,Heels,Pink,Casual,Cobblerz Women Pink & White Wedges,45324.jpg,http://assets.myntassets.com/v1/images/style/properties/31414b116179349f43cf4a558a05de25_images.jpg,49.99
+10292,Women,Footwear,Shoes,Heels,Brown,Casual,Clarks Women Brown Leather Heels,10292.jpg,http://assets.myntassets.com/v1/images/style/properties/Clarks-Women-Dolphin-Splash-Leather-Silver-Sandals_e55a6fa02cca3f6b6f3fa750619911d4_images.jpg,55.75

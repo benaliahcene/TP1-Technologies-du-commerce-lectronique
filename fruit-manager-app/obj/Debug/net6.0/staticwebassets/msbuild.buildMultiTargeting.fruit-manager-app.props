@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\fruit-manager-app.props" />
+</Project>
