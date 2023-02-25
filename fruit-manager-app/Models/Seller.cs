@@ -9,6 +9,9 @@ namespace DemoAspNet.Models
         [Required(ErrorMessage = "Champs requis !")]
         public string? Prenom { get; set; }
         [Required(ErrorMessage = "Champs requis !")]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
+
+        //relations
+        public ICollection<Product>? Products { get; set; }
     }
 }

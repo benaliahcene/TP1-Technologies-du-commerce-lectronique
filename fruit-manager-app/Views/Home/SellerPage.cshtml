@@ -6,32 +6,39 @@
 @{
     Layout = "_SellerPage";
     ViewBag.Title = ViewBag.Title;
+
 }
 
-@model List<DemoAspNet.Models.Product>
+@model DemoAspNet.Models.Product;
 @using DemoAspNet.Controllers;
 @using DemoAspNet.Models;
-
+<h3> @ViewBag.Nom_Vendeur</h3>
 <h1 class="pb-3">Gestion des produits</h1>
 
 
-<form asp-action="Results">
+<form asp-action="AddProduct">
     <div class="container">
-        <div class="row">
-            <div class="col"><input @*asp-for="Title" *@type="text" class="form-control" placeholder="Titre ..." /></div>
-            <div class="col"><input @*asp-for="Vendeur"*@ type="text" class="form-control" placeholder="Prix ..." /></div>
-            <div class="col"><input @*asp-for="Categorie"*@ type="text" class="form-control" placeholder="Categorie ..." /></div>
-            <div class="col"><input @*asp-for="Pour"*@ type="text" class="form-control" placeholder="Pour ..." /></div>
-            <div class="col"><input @*asp-for="URLimg"*@ type="text" class="form-control" placeholder="URL image ..." /></div>
-
-
-            <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i> Ajouter</button></div>
+        <div class="row p-4">
+            <div class="col"><input asp-for="Title" type="text" class="form-control" placeholder="Titre ..." /></div>
+            <div class="col"><input asp-for="Categorie" type="text" class="form-control" placeholder="Categorie ..." /></div>
+            <div class="col"><input asp-for="Pour" type="text" class="form-control" placeholder="Pour ..." /></div>
+            <div class="col"><input asp-for="Vendeur" type="text" class="form-control" placeholder="Nom de vendeur ..."  /></div>
+            <div class="col"><input asp-for="Prix" type="number" min="0" class="form-control" placeholder="Prix ..." /></div>
+            <div class="col"><input asp-for="Description" type="text" class="form-control" placeholder="Casual?Sports? ..." /></div>
+            <div class="col"><input asp-for="URLimg" type="text" class="form-control" placeholder="URL image ..." /></div>
+            <div class="col"><input asp-for="Nbr" type="number" min="1" class="form-control" placeholder="Quantité ..." /></div>
+            <div class="col"><input asp-for="SellerId" type="number" min="1" max="4" class="form-control" /></div>
+        </div>
+        <div class="input-group-prepend p-4">
+            <div class="col">
+                <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i> Ajouter</button></div>
+            </div>
         </div>
     </div>
 </form>
 <hr />
 <div class="row">
-    @foreach (DemoAspNet.Models.Product product in Model)
+    @foreach (DemoAspNet.Models.Product product in ViewBag.Products)
     {
         <div class="col">
             <partial name="_VProduit" model="product" />

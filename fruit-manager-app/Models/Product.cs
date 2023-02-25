@@ -23,12 +23,18 @@ namespace DemoAspNet.Models
         public string? Description { get; set; }
         [Required(ErrorMessage = "Champs requis !")]
         public string? URLimg { get; set; }
-        /*        public int? Nbr { get; set; } = 0;
-        */
+        public int? Nbr { get; set; }
         //relations
 
-       public int  FK_ClientId { get; set; }
-       public Client? Client { get; set; }           
+        //client
+  
+        //
+        public int? SellerId { get; set; }
+        public Seller? Seller { get; set; }
+        public ICollection<ClientProduct>? ClientProducts { get; set; }
+
+        public ICollection<PanierProduct>? PanierProducts { get; set; }
+
 
     }
 }

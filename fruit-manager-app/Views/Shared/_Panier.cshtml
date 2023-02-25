@@ -4,21 +4,21 @@
 @{
 }
 
-@model DemoAspNet.Models.Product
+@model DemoAspNet.Models.Panier
 
 
 <div class="container-fluid p-5 w-100">
     <div class="col-md-11">
         <div class="card ">
-            <img class="card-img-top" src="@Model.URLimg">
-            <div class="card-body">
+@*            <img class="card-img-top" src="@Model.URLimg">
+*@            <div class="card-body">
                 <h5 class="card-title">@Model.Title</h5>
               
                 <h6 class="card-subtitle mb-2 text-muted">@Model.Vendeur</h6>
-                <h6 class="card-subtitle mb-2 text-muted">@Model.Prix</h6>
+                <h6 class="card-subtitle mb-2 text-muted">@Model.PrixU</h6>
                 <label> Quantité</label>
-                <input type="number" class="form-control" min="0"/>
-                <a class="btn btn-success w-100" href="#" role="button">Retirer</a>
+                <input type="number" class="form-control p-3" min="0"/>
+                <a class="btn btn-success w-100 p-3" href="~/home/removeproductpanier/@Model.Id" role="button">Retirer</a>
             </div>
         </div>
     </div>

@@ -6,28 +6,13 @@
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@model DemoAspNet.Models.Product
+@model DemoAspNet.Models.Seller
 
-<h1 class="pb-3">Ajouter un produit</h1>
+<h1 class="pb-3">Merci ! de participé dans la croissance de note platforme</h1>
 
-<form asp-action="AddProduct">
-    <div class="form-group">
-        <label class="form-label" asp-for="Title">Titre du produit</label>
-        <input class="form-control" type="text" asp-for="Title" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
+<div class="alert alert-danger" role="alert">
+    le produit a ajouté avec success !
+</div>
 
-    <div class="form-group">
-        <label class="form-label" asp-for="Vendeur">Amelie</label>
-        <input class="form-control" type="text" asp-for="Vendeur" />
-        <span asp-validation-for="Vendeur" class="text-danger"></span>
-    </div>
 
-    <div class="form-group">
-        <label class="form-label" asp-for="Description">Une ptite description</label>
-        <input class="form-control" type="text" asp-for="Description" />
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
-</form>
+<a href="~/Home/SellerPage" class="btn btn-success" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>

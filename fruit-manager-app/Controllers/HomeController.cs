@@ -1,9 +1,11 @@
-﻿using CsvHelper;
-using DemoAspNet.Models;
+﻿using DemoAspNet.Models;
 using fruit_manager_app;
 using Intercom.Core;
+using Intercom.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Linq;
 
 namespace DemoAspNet.Controllers
 {
@@ -12,32 +14,10 @@ namespace DemoAspNet.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Page des produits";
-           
-
-            List<Models.Product> products = new List<Models.Product>();
-
-            using (var reader = new StreamReader("Data/data.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-                       new Models.Product { Title = csv.GetField("ProductTitle"),
-                           Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat),
-                           Categorie = csv.GetField("Category"),
-                           Description = csv.GetField("Usage"),
-                           Pour = csv.GetField("Gender"),
-                           Vendeur =csv.GetField("Seller"),
-                           URLimg = csv.GetField("ImageURL") }
-                   );
-                };
-            }
-           
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();           
             ViewBag.Products = products;
             return View();
-            /*     return View();*/
 
 
         }
@@ -45,29 +25,8 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Page des produits";
 
-            List<Models.Product> products = new List<Models.Product>();
-
-            using (var reader = new StreamReader("Data/data.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-                       new Models.Product
-                       {
-                           Title = csv.GetField("ProductTitle"),
-                           Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat),
-                           Categorie = csv.GetField("Category"),
-                           Description = csv.GetField("Usage"),
-                           Pour = csv.GetField("Gender"),
-                           Vendeur = csv.GetField("Seller"),
-                           URLimg = csv.GetField("ImageURL")
-                       }
-                   );
-                };
-            }
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
 
             return View(products);
         }
@@ -84,41 +43,29 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Panier";
 
-            List<Models.Product> products = new List<Models.Product>();
-            using (var reader = new StreamReader("Data/data.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-                       new Models.Product
-                       {
-                           Title = csv.GetField("ProductTitle"),
-                           Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat),
-                           Categorie = csv.GetField("Category"),
-                           Description = csv.GetField("Usage"),
-                           Pour = csv.GetField("Gender"),
-                           Vendeur = csv.GetField("Seller"),
-                           URLimg = csv.GetField("ImageURL")
-                       }
-                   );
-                };
-            }
-            return View(products);
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Panier> panier = tpAspNetDbContext.Paniers.ToList();
+/*            ViewBag.Products = panier;
+*/            return View(panier);
+
         }
         // Ajouter un client au base de données 
         [HttpGet]
         public IActionResult ClientLogin()
         {
+            ViewBag.Title = "Client - connexion";
+
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Client> clients = tpAspNetDbContext.Clients.ToList();
+            ViewBag.Clients = clients;
             return View();
         }
         [HttpPost]
         public IActionResult AddClient(Models.Client client)
         {
-           
-            TpAspNetDbContext tpAspNetDbContext=new TpAspNetDbContext();
+            ViewBag.Title = "Ajouter un client";
+
+            TpAspNetDbContext tpAspNetDbContext =new TpAspNetDbContext();
             tpAspNetDbContext.Clients.Add(client);
             tpAspNetDbContext.SaveChanges();
 
@@ -127,21 +74,32 @@ namespace DemoAspNet.Controllers
         }
         public IActionResult AddClient()
         {
+            return View();
+        }
+        public IActionResult AddProduct(Models.Product product)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            tpAspNetDbContext.Products.Add(product);
+            tpAspNetDbContext.SaveChanges();
 
-          return View();
+            return View();
 
         }
         // ajouter un vendeur au base de données
         [HttpGet]
         public IActionResult SellerLogin()
         {
-            ViewBag.Title = "Nouveau Profil";
+            ViewBag.Title = "Vendeur - connexion";
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Seller> Sell = tpAspNetDbContext.sellers.ToList();
+            ViewBag.Sellers=Sell;
 
             return View();
         }
         [HttpPost]
         public IActionResult AddSeller(Models.Seller seller)
         {
+            ViewBag.Title = "Ajouter - vendeur ";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             tpAspNetDbContext.sellers.Add(seller);
@@ -152,6 +110,7 @@ namespace DemoAspNet.Controllers
         }
         public IActionResult AddSeller()
         {
+            ViewBag.Title = "Ajouter - vendeur ";
 
             return View();
 
@@ -159,11 +118,27 @@ namespace DemoAspNet.Controllers
         // modification de compte client
         public IActionResult EditProfilClient()
         {
+            ViewBag.Title = "Modification du profil ";
+
             return View();
         }
+        public IActionResult EditProfilClients(string nom, string prenom, int id, float solde)
+        {
+            ViewBag.Title = "Modification du profil ";
 
-        [HttpPost]
-        public IActionResult AddProduct(Models.Product product)
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Client client = tpAspNetDbContext.Clients.Find(id); Console.WriteLine(id);
+            Console.WriteLine(client.Nom); Console.WriteLine(client.Prenom);
+            client.Nom = nom;
+            client.Prenom = prenom;
+            client.Solde = solde;
+            tpAspNetDbContext.SaveChanges();
+            return RedirectToAction("ClientPage");
+        }
+       
+
+            [HttpPost]
+       /* public IActionResult AddProduct(Models.Product product)
         {
             ViewBag.Title = "Ajouter un produit";
 
@@ -171,7 +146,7 @@ namespace DemoAspNet.Controllers
                 return RedirectToAction("Results", product);
 
             return View();
-        }
+        }*/
 
 
         /* public IActionResult Results()
@@ -179,281 +154,83 @@ namespace DemoAspNet.Controllers
              return RedirectToAction("Index");
          }*/
         
-        public IActionResult EditProfilVendeur(Models.Seller seller)
+        public IActionResult EditProfilVendeur(string nom,string prenom,int id)
         {
+            ViewBag.Title = "Modification du profil ";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            tpAspNetDbContext.sellers.Update(seller);
+           Models.Seller seller= tpAspNetDbContext.sellers.Find(id); Console.WriteLine(id);
+            Console.WriteLine(seller.Nom); Console.WriteLine(seller.Prenom);
+            seller.Nom = nom;
+            seller.Prenom = prenom;
             tpAspNetDbContext.SaveChanges();
+           return RedirectToAction("SellerPage");
+        }
+        public IActionResult EditProfilVendeur()
+        {
+            ViewBag.Title = "Modification du profil ";
+
             return View();
         }
 
-        public ActionResult ClientPage()
+        public IActionResult ClientPage(Models.Client client)
         {
-          
-             List<Models.Product> products = new List<Models.Product>();
+            ViewBag.Title = "Page client "; Console.WriteLine(client.Nom); Console.WriteLine(client.Id);
+            ViewBag.Nom = client.Nom;
 
-            using (var reader = new StreamReader("Data/data.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-                       new Models.Product
-                       {
-                           Title = csv.GetField("ProductTitle"),
-                           Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat),
-                           Categorie = csv.GetField("Category"),
-                           Description = csv.GetField("Usage"),
-                           Pour = csv.GetField("Gender"),
-                           Vendeur = csv.GetField("Seller"),
-                           URLimg = csv.GetField("ImageURL")
-                       }
-                   );
-                };
-            }
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
 
-            return View(products);
+            ViewBag.Products = products;
+
+            return View();
+        }
+        public  IActionResult StatClient()
+        {
+            ViewBag.Title = "Statistiques ";
+
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Stat> Stats = tpAspNetDbContext.Stats.ToList();
+            return View(Stats);
         }
         public IActionResult ClientListeFactures()
         {
+            ViewBag.Title = "Factures ";
             return View();
         }
 
         // hello test
         public IActionResult SellerListeFactures()
         {
+            ViewBag.Title = "Factures ";
             return View();
         }
 
-       
+
         public IActionResult SellerPage(Models.Seller user_product)
         {
+            ViewBag.Title = "Page Vendeur ";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            List<Models.Seller> Sell = tpAspNetDbContext.sellers.ToList();
-            List<Models.Seller> match_sellers = new List<Models.Seller>();
-            List<Models.Product> products = new List<Models.Product>();
-            string nom_1 = "Albert";
-            string nom_2 = "Amelie";
-            string nom_3 = "Julie";
-            string nom_4 = "Xavier";
-           
-            user_product.Nom = String.IsNullOrEmpty(user_product.Nom) ? String.Empty : user_product.Nom;
-            foreach (Models.Seller seller in Sell)
-            {
-                if (seller.Nom.Equals(user_product.Nom))
-                { if(nom_1.Equals(user_product.Nom))
-                    {
-                        ViewBag.Nom_Vendeur = "Albert";
-
-                        Console.WriteLine(seller.Nom);
-                    Console.WriteLine("test1");
-
-                    Console.WriteLine(user_product.Nom);
-
-                    using (var reader = new StreamReader("Data/Albert/Albert.csv"))
-                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                    {
-                        csv.Read();
-                        csv.ReadHeader();
-                        while (csv.Read())
-                        {
-                            Console.WriteLine("Data/Albert/Images/" + csv.GetField("Image"));
-                            products.Add(
-
-                               new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                           );
-
-
-                        };
-                    }
-                    return View(products);
-                  }
-                    if (nom_2.Equals(user_product.Nom))
-                    {
-                        ViewBag.Nom_Vendeur = "Amelie";
-
-                        Console.WriteLine(seller.Nom);
-                        Console.WriteLine("test1");
-
-                        Console.WriteLine(user_product.Nom);
-
-                        using (var reader = new StreamReader("Data/Amélie/Amélie.csv"))
-                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                        {
-                            csv.Read();
-                            csv.ReadHeader();
-                            while (csv.Read())
-                            {
-                                Console.WriteLine("Data/Amelie/Images/" + csv.GetField("Image"));
-                                products.Add(
-
-                                   new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                               );
-
-
-                            };
-                        }
-                        return View(products);
-                    }
-                    if (nom_3.Equals(user_product.Nom))
-                    {
-                        ViewBag.Nom_Vendeur = "Julie";
-
-                        Console.WriteLine(seller.Nom);
-                        Console.WriteLine("test1");
-
-                        Console.WriteLine(user_product.Nom);
-
-                        using (var reader = new StreamReader("Data/Julie/Julie.csv"))
-                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                        {
-                            csv.Read();
-                            csv.ReadHeader();
-                            while (csv.Read())
-                            {
-                                Console.WriteLine("Data/Julie/Images/" + csv.GetField("Image"));
-                                products.Add(
-
-                                   new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                               );
-
-
-                            };
-                        }
-                        return View(products);
-                    }
-                    if (nom_4.Equals(user_product.Nom))
-                    {
-                        ViewBag.Nom_Vendeur = "Xavier" ;
-                        Console.WriteLine(seller.Nom);
-                        Console.WriteLine("test1");
-
-                        Console.WriteLine(user_product.Nom);
-
-                        using (var reader = new StreamReader("Data/Xavier/Xavier.csv"))
-                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                        {
-                            csv.Read();
-                            csv.ReadHeader();
-                            while (csv.Read())
-                            {
-                                Console.WriteLine("Data/Xavier/Images/" + csv.GetField("Image"));
-                                products.Add(
-
-                                   new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                               );
-
-
-                            };
-                        }
-                        return View(products);
-                    }
-
-                }
-              
-               
-            }
-            return RedirectToAction("SellerLogin");
-            /*ViewBag.Seller = Sell;*/
-
-
-            /*ViewBag.Title = "Page de contact";
-            List<Models.Product> products = new List<Models.Product>();
-
-            using (var reader = new StreamReader("Data/Albert/Albert.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    Console.WriteLine("Data/Albert/Images/" + csv.GetField("Image"));
-                    products.Add(
-
-                       new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                   );
-
-
-                };
-            }
-            return View(products);*/
-            return View();
             
-        }
+            if (user_product.Id >0 )
+			{
+				ViewBag.Nom_Vendeur = user_product.Nom;
+				ViewBag.Id_Vendeur = user_product.Id;
+                Console.WriteLine(user_product.Nom);
+                List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId==user_product.Id).ToList();
+                ViewBag.Products = products;
+  				return View();
+			}
+			return RedirectToAction("SellerLogin");
 
 
-
-        [HttpPost]
+		}
+		
+		[HttpPost]
         public IActionResult Results(Models.Product user_product)
         {
-            List<Models.Product> products = new List<Models.Product>();
-
-            using (var reader = new StreamReader("Data/Albert/Albert.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    Console.WriteLine("Data/Albert/Images/" + csv.GetField("Image"));
-                    products.Add(
-
-                       new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Albert", URLimg = csv.GetField("ImageURL") }
-                   );
-
-
-                };
-            }
-            using (var reader = new StreamReader("Data/Amélie/Amélie.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-
-                       new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Amélie", URLimg = csv.GetField("ImageURL") }
-                   );
-
-
-                };
-            }
-            using (var reader = new StreamReader("Data/Julie/Julie.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-
-                       new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Julie", URLimg = csv.GetField("ImageURL") }
-                   );
-
-
-                };
-            }
-            using (var reader = new StreamReader("Data/Xavier/Xavier.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Read();
-                csv.ReadHeader();
-                while (csv.Read())
-                {
-                    products.Add(
-
-                       new Models.Product { Title = csv.GetField("ProductTitle"), Prix = float.Parse(csv.GetField("Price"), CultureInfo.InvariantCulture.NumberFormat), Categorie = csv.GetField("Category"), Description = csv.GetField("Usage"), Pour = csv.GetField("Gender"), Vendeur = "Xavier", URLimg = csv.GetField("ImageURL") }
-                   );
-
-
-                };
-            }
-
-
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();        
             List<Models.Product> match_products = new List<Models.Product>();
 
             user_product.Title = String.IsNullOrEmpty(user_product.Title) ? String.Empty : user_product.Title;
@@ -470,6 +247,46 @@ namespace DemoAspNet.Controllers
 
             return View(match_products);
         }
+        [HttpGet]
+        [Route("Home/RemoveProduct/{Id:int}")]
+        public IActionResult RemoveProduct(int Id)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
+            tpAspNetDbContext.Products.Remove(product);
+            tpAspNetDbContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [Route("Home/panierproduct/{Id:int}")]
+        public IActionResult PanierProduct(int Id)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
+            Models.Panier panier = new Panier();
+/*            panier.Id = product.Id;
+*/            panier.Vendeur = product.Vendeur;
+            panier.PrixU=(float)product.Prix;
+            panier.Title = product.Title;
+            tpAspNetDbContext.Paniers.Add(panier);
+            tpAspNetDbContext.SaveChanges();
+
+            return RedirectToAction("Panier");
+        }
+        [HttpGet]
+        [Route("Home/RemoveProductPanier/{Id:int}")]
+        public IActionResult RemoveProductPanier(int Id)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Panier panier = tpAspNetDbContext.Paniers.Find(Id); Console.WriteLine(Id);
+            tpAspNetDbContext.Paniers.Remove(panier);
+            tpAspNetDbContext.SaveChanges();
+
+            return RedirectToAction("Panier");
+        }
+
+
     }
 
 }

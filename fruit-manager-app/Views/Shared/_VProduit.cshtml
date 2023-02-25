@@ -14,13 +14,16 @@
                         <img width="100" src="@Model.URLimg">
                     </div>
                     <div class="col">
-                        <b><i class="bi bi-product-fill"></i> Titre :</b> <input asp-for="Title"  type="text" class="form-control" placeholder="@Model.Title ..." /> <br />
-                        <b><i class="bi bi-pencil-fill"></i> Prix :</b>  <input asp-for="number" type="number" class="form-control" min="0" /> <br />
-                        <b><i class="bi bi-pencil-fill"></i> Quantité disponible :</b>  <input type="number" class="form-control" min="0" /> <br />
+                        <b><i class="bi bi-product-fill"></i> Titre :</b> <input   type="text" class="form-control" placeholder="@Model.Title ..." /> <br />
+                        <b><i class="bi bi-product-fill"></i> Id:</b> <input   type="text" class="form-control" placeholder="@Model.Id ..." /> <br />
+
+                        <b><i class="bi bi-pencil-fill"></i> Prix :</b>  <input asp-for="Nbr" type="number" class="form-control" min="0" placeholder="@Model.Prix ..." /> <br />
+                        <b><i class="bi bi-pencil-fill"></i> Quantité disponible :</b>  <input type="number" class="form-control" min="0" placeholder="@Model.Nbr " /> <br />
 
                     </div>
                     <a href="#" class="btn btn-danger p-1 mb-1" role="button"><i class="bi bi-cart"></i> Sauvegarder</a>
-                    <a href="#" class="btn btn-danger p-1 mb-1" role="button"><i class="bi bi-cart"></i> Supprimer</a>
+
+                    <a class="btn btn-danger" href="~/home/removeproduct/@Model.Id" role="button">Supprimer</a>
 
                 </div>
             </div>

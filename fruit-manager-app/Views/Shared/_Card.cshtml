@@ -25,9 +25,9 @@
                         <b><i class="bi bi-pencil-fill"></i> Vendur :</b> @Model.Vendeur
                         <b><i class="bi bi-pencil-fill"></i> Prix :</b> @Model.Prix <br />
                         <b><i class="bi bi-pencil-fill"></i> Usage :</b> @Model.Description <br />
-
+                        <b><i class="bi bi-pencil-fill"></i> Id :</b> @Model.Id <br />
                     </div>
-                    <a href="~/Home/Panier" class="btn btn-warning" role="button"><i class="bi bi-cart"></i> Ajouter au panier</a>
+                        <a class="btn btn-warning" href="~/home/panierproduct/@Model.Id" role="button"><i class="bi bi-cart"></i> Ajouter au panier</a>
                 </div>
             </div>
         </div>

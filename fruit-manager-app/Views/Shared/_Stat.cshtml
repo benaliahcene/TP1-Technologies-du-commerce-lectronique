@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model DemoAspNet.Models.Stat
+
+
+
+
+
+<div class="card mb-2 p-3">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                     <div class="col">
+                        <h3>Statistiques : </h3>
+                        <b><i class="bi bi-product-fill"></i>Total des sommes dépensées:</b> @Model.Sommes ..$CAD<br />
+                        <b><i class="bi bi-pencil-fill"></i> Nombre d'article Achetés :</b> @Model.NbrArticle <br />
+                    </div>
+                    <a href="~/Home/PageClient" class="btn btn-warning" role="button"><i class="bi bi-cart"></i> Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

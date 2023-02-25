@@ -9,18 +9,18 @@
 }
 @model  DemoAspNet.Models.Client;
 
-<h1 class="pb-3">Client - connexion¸</h1>
+<h1 class="pb-3">Client - connexion</h1>
 
 <form asp-action="ClientPage">
     <div class="container p-3">
         <div class="row">
             <select asp-for="Nom" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Clients</option>
-                <option value="1">Clinet_1</option>
-                <option value="2">Clinet_2</option>
-                <option value="3">Client_3</option>
-                <option value="4">Client_4</option>
-                <option value="5">Client_5</option>
+
+                @foreach (DemoAspNet.Models.Client client in ViewBag.Clients)
+                {
+                    <option value="@client.Nom">@client.Nom</option>
+                }
+
             </select>
         </div>
         <div class="input-group-prepend">
