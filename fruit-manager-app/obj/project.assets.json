@@ -3665,11 +3665,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
+      "projectUniqueName": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
       "projectName": "fruit-manager-app",
-      "projectPath": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
+      "projectPath": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
       "packagesPath": "C:\\Users\\Ahcene Benali\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\obj\\",
+      "outputPath": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ahcene Benali\\AppData\\Roaming\\NuGet\\NuGet.Config",

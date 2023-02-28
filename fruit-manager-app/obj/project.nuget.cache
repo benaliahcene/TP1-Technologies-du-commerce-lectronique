@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BGiKjxuK6EhyDyR+UPUh3vS7RlpduereINj1wX2yNBAtwywfceEEn/VmGpLCGjoZRPpvdeBp+7niMSkJxzH/bg==",
+  "dgSpecHash": "4AvCFCt7W1RuRJ9EPTtZKZlM8Muy8n/i3heDmpSNPZiuCaIiWmjbfx0sO8NV97UQHqc4TRkzv4PP4iQlY2XtWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
+  "projectFilePath": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\fruit-manager-app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahcene Benali\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Ahcene Benali\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

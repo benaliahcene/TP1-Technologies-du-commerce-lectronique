@@ -10,6 +10,8 @@
 @model List<DemoAspNet.Models.Stat>
 <h1 class="pb-3">Client </h1>
 <hr />
+<h3>Statistiques : </h3>
+
 <div class="row p-5">
     @foreach (DemoAspNet.Models.Stat stat in Model)
     {
@@ -18,3 +20,4 @@
         </div>
     }
 </div>
+<a href="~/Home/PageClient" class="btn btn-warning" role="button"><i class="bi bi-cart"></i> Retour</a>

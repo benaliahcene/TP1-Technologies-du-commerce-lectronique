@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WYNKE0u9KwOGBzYBS4twNNHfFcOG7oHL0UW30krB/+0=",
+  "Hash": "GzQGqOyV6fNCxf4346MYDdijWBANfWo8Dlq3cfo5VoA=",
   "Source": "fruit-manager-app",
   "BasePath": "_content/fruit-manager-app",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "fruit-manager-app\\wwwroot",
       "Source": "fruit-manager-app",
-      "ContentRoot": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
       "BasePath": "_content/fruit-manager-app",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\css\\site.min.css",
+      "Identity": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\css\\site.min.css",
       "SourceId": "fruit-manager-app",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
       "BasePath": "_content/fruit-manager-app",
       "RelativePath": "css/site.min.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.min.css"
     },
     {
-      "Identity": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\index.html",
       "SourceId": "fruit-manager-app",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
       "BasePath": "_content/fruit-manager-app",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\js\\site.min.js",
+      "Identity": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\js\\site.min.js",
       "SourceId": "fruit-manager-app",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ahcene Benali\\source\\repos\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\",
       "BasePath": "_content/fruit-manager-app",
       "RelativePath": "js/site.min.js",
       "AssetKind": "All",

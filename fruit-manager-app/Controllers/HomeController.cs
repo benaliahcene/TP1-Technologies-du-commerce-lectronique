@@ -15,7 +15,7 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Page des produits";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            List<Models.Product> products = tpAspNetDbContext.Products.ToList();           
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
             ViewBag.Products = products;
             return View();
 
@@ -30,7 +30,7 @@ namespace DemoAspNet.Controllers
 
             return View(products);
         }
-        
+
 
         [HttpGet]
         public IActionResult AddProduct()
@@ -38,15 +38,15 @@ namespace DemoAspNet.Controllers
             ViewBag.Title = "Ajouter un produit";
             return View();
         }
-        
+
         public IActionResult Panier()
         {
             ViewBag.Title = "Panier";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Panier> panier = tpAspNetDbContext.Paniers.ToList();
-/*            ViewBag.Products = panier;
-*/            return View(panier);
+            ViewBag.Products = panier;
+            return View();
 
         }
         // Ajouter un client au base de données 
@@ -65,12 +65,12 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Ajouter un client";
 
-            TpAspNetDbContext tpAspNetDbContext =new TpAspNetDbContext();
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             tpAspNetDbContext.Clients.Add(client);
             tpAspNetDbContext.SaveChanges();
 
             return RedirectToAction("ClientLogin");
-            
+
         }
         public IActionResult AddClient()
         {
@@ -92,7 +92,7 @@ namespace DemoAspNet.Controllers
             ViewBag.Title = "Vendeur - connexion";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Seller> Sell = tpAspNetDbContext.sellers.ToList();
-            ViewBag.Sellers=Sell;
+            ViewBag.Sellers = Sell;
 
             return View();
         }
@@ -135,36 +135,36 @@ namespace DemoAspNet.Controllers
             tpAspNetDbContext.SaveChanges();
             return RedirectToAction("ClientPage");
         }
-       
 
-            [HttpPost]
-       /* public IActionResult AddProduct(Models.Product product)
-        {
-            ViewBag.Title = "Ajouter un produit";
 
-            if (ModelState.IsValid)
-                return RedirectToAction("Results", product);
+        [HttpPost]
+        /* public IActionResult AddProduct(Models.Product product)
+         {
+             ViewBag.Title = "Ajouter un produit";
 
-            return View();
-        }*/
+             if (ModelState.IsValid)
+                 return RedirectToAction("Results", product);
+
+             return View();
+         }*/
 
 
         /* public IActionResult Results()
          {
              return RedirectToAction("Index");
          }*/
-        
-        public IActionResult EditProfilVendeur(string nom,string prenom,int id)
+
+        public IActionResult EditProfilVendeur(string nom, string prenom, int id)
         {
             ViewBag.Title = "Modification du profil ";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-           Models.Seller seller= tpAspNetDbContext.sellers.Find(id); Console.WriteLine(id);
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(id); Console.WriteLine(id);
             Console.WriteLine(seller.Nom); Console.WriteLine(seller.Prenom);
             seller.Nom = nom;
             seller.Prenom = prenom;
             tpAspNetDbContext.SaveChanges();
-           return RedirectToAction("SellerPage");
+            return RedirectToAction("SellerPage");
         }
         public IActionResult EditProfilVendeur()
         {
@@ -172,7 +172,7 @@ namespace DemoAspNet.Controllers
 
             return View();
         }
-
+        //eferf
         public IActionResult ClientPage(Models.Client client)
         {
             ViewBag.Title = "Page client "; Console.WriteLine(client.Nom); Console.WriteLine(client.Id);
@@ -185,7 +185,7 @@ namespace DemoAspNet.Controllers
 
             return View();
         }
-        public  IActionResult StatClient()
+        public IActionResult StatClient()
         {
             ViewBag.Title = "Statistiques ";
 
@@ -211,26 +211,26 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Page Vendeur ";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            
-            if (user_product.Id >0 )
-			{
-				ViewBag.Nom_Vendeur = user_product.Nom;
-				ViewBag.Id_Vendeur = user_product.Id;
+
+            if (user_product.Id > 0)
+            {
+                ViewBag.Nom_Vendeur = user_product.Nom;
+                ViewBag.Id_Vendeur = user_product.Id;
                 Console.WriteLine(user_product.Nom);
-                List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId==user_product.Id).ToList();
+                List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
                 ViewBag.Products = products;
-  				return View();
-			}
-			return RedirectToAction("SellerLogin");
+                return View();
+            }
+            return RedirectToAction("SellerLogin");
 
 
-		}
-		
-		[HttpPost]
+        }
+
+        [HttpPost]
         public IActionResult Results(Models.Product user_product)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            List<Models.Product> products = tpAspNetDbContext.Products.ToList();        
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
             List<Models.Product> match_products = new List<Models.Product>();
 
             user_product.Title = String.IsNullOrEmpty(user_product.Title) ? String.Empty : user_product.Title;
@@ -265,10 +265,12 @@ namespace DemoAspNet.Controllers
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
             Models.Panier panier = new Panier();
-/*            panier.Id = product.Id;
-*/            panier.Vendeur = product.Vendeur;
-            panier.PrixU=(float)product.Prix;
+            /*            panier.Id = product.Id;
+            */
+            panier.Vendeur = product.Vendeur;
+            panier.PrixU = (float)product.Prix;
             panier.Title = product.Title;
+            panier.Quantite = 1;
             tpAspNetDbContext.Paniers.Add(panier);
             tpAspNetDbContext.SaveChanges();
 
@@ -285,8 +287,24 @@ namespace DemoAspNet.Controllers
 
             return RedirectToAction("Panier");
         }
+        [HttpGet]
+        [Route("~/Home/paiment/{PrixU:float}")]
+        public IActionResult paiment( float PrixU)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Stat stat =new Stat();
+            stat.NbrArticle = "1";
+            stat.Sommes = PrixU;
+            tpAspNetDbContext.Stats.Add(stat);
+            tpAspNetDbContext.SaveChanges();
 
 
+            return RedirectToAction("StatClient");
+        }
+        public IActionResult Facture(int Id)
+        {
+        return View();  
+        }
     }
 
 }

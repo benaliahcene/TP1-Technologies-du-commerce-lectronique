@@ -11,7 +11,7 @@
 @using DemoAspNet.Controllers;
 @using DemoAspNet.Models;
 
-@model List<DemoAspNet.Models.Panier>
+@model DemoAspNet.Models.Panier
 
 <h1 class="pb-3">Panier</h1>
 <div class="d-flex">
@@ -20,13 +20,12 @@
 </div>
 
 
-    @foreach (DemoAspNet.Models.Panier panier in @Model)
+@foreach (DemoAspNet.Models.Panier panier in ViewBag.Products)
     {
         <div class="col">
             <partial name="_Panier" model=panier />
         </div>
     }
-</div>
+
 
 <hr />
-<a href="#" class="btn btn-primary mx-auto w-100 p-7" role="button"><i class="bi bi-box-arrow-left"></i> Paiement </a>
