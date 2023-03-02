@@ -8,12 +8,12 @@
     ViewBag.Title = ViewBag.Title;
 }
 
-@model List<DemoAspNet.Models.Product>
+@model DemoAspNet.Models.Product
 @using DemoAspNet.Controllers;
 @using DemoAspNet.Models;
 
 
-<h1 class="pb-3">Welcome</h1>
+
 <div class="d-flex pt-5 mt-5 mb-5">
     <a href="~/Home/clientlogin" class="btn btn-primary mx-auto w-75" role="button"><i class="bi bi-box-arrow-left"></i> Aller au panier</a>
 </div>
@@ -22,9 +22,9 @@
 <form asp-action="Results">
     <div class="container">
         <div class="row">
-            <div class="col"><input @*asp-for="Title" *@type="text" class="form-control" placeholder="Titre ..." /></div>
-            <div class="col"><input @*asp-for="Vendeur"*@ type="text" class="form-control" placeholder="Vendeur ..." /></div>
-            <div class="col"><input @*asp-for="Categorie"*@ type="text" class="form-control" placeholder="Categorie ..." /></div>
+            <div class="col"><input asp-for="Title" type="text" class="form-control" placeholder="Titre ..." /></div>
+            <div class="col"><input asp-for="Vendeur" type="text" class="form-control" placeholder="Vendeur ..." /></div>
+            <div class="col"><input asp-for="Categorie" type="text" class="form-control" placeholder="Categorie ..." /></div>
             <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i> Filtrer</button></div>
         </div>
     </div>
@@ -32,7 +32,7 @@
 
 
 <div class="row p-5">
-    @foreach (DemoAspNet.Models.Product product in Model)
+    @foreach (DemoAspNet.Models.Product product in ViewBag.Products)
     {
         <div class="col">
             <partial name="_Card" model="product" />

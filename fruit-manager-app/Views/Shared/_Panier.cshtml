@@ -3,25 +3,33 @@
 *@
 @{
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @model DemoAspNet.Models.Panier
 
 
 <div class="container-fluid p-5 w-100">
-    <div class="col-md-11">
-        <div class="card ">
-@*            <img class="card-img-top" src="@Model.URLimg">
-*@            <div class="card-body">
-                <h5 class="card-title">@Model.Title</h5>
-              
-                <h6 class="card-subtitle mb-2 text-muted">@Model.Vendeur</h6>
-                <h6 class="card-subtitle mb-2 text-muted">@Model.PrixU</h6>
-                <label> Quantité</label>
-                <input type="number" class="form-control p-3" min="0"/>
-                <a class="btn btn-success w-100 p-3" href="~/home/removeproductpanier/@Model.Id" role="button">Retirer</a>
-                <a href="~/Home/paiment/@Model.PrixU" class="btn btn-primary mx-auto w-100 p-7" role="button"><i class="bi bi-box-arrow-left"></i> Paiement </a>
+	<div class="row">
+		<div class="col-md-11">
+			<div class="card ">
+				<div class="card-body">
+					<form asp-action="Paiement" method="post">
+						<h5 class="card-title">@Model.Title</h5>
+						<h6 class="card-subtitle mb-2 text-muted">@Model.Vendeur</h6>
+						<h6 class="card-subtitle mb-2 text-muted">@Model.PrixU</h6>
+						<input asp-for="Title" type="hidden" value="@Model.Title">
+						<input asp-for="Id" type="hidden" value="@Model.Id">
+						<input asp-for="PrixU" type="hidden" value="@Model.PrixU">
+						<label> Quantité</label>
+						<div class="col"><input asp-for="Quantite" type="number" min="0" class="form-control" placeholder="quantité ..." /></div>
+						<div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i> Paiement</button></div>
+					</form>
 
-            </div>
-        </div>
-    </div>
+					<a class="btn btn-success w-100 p-3" href="~/home/removeproductpanier/@Model.Id" role="button">Retirer</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fruit_manager_app;
 
@@ -11,9 +12,11 @@ using fruit_manager_app;
 namespace fruit_manager_app.Migrations
 {
     [DbContext(typeof(TpAspNetDbContext))]
-    partial class TpAspNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230302214248_Createbd")]
+    partial class Createbd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

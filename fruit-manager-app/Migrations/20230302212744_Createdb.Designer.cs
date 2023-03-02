@@ -12,8 +12,8 @@ using fruit_manager_app;
 namespace fruit_manager_app.Migrations
 {
     [DbContext(typeof(TpAspNetDbContext))]
-    [Migration("20230224183441_CreateBd")]
-    partial class CreateBd
+    [Migration("20230302212744_Createdb")]
+    partial class Createdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,36 @@ namespace fruit_manager_app.Migrations
                     b.ToTable("ClientProduct");
                 });
 
+            modelBuilder.Entity("DemoAspNet.Models.Facture", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<float?>("PrixT")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("PrixU")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("Quantite")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Factures");
+                });
+
             modelBuilder.Entity("DemoAspNet.Models.Panier", b =>
                 {
                     b.Property<int>("Id")
@@ -83,6 +113,9 @@ namespace fruit_manager_app.Migrations
 
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
+
+                    b.Property<float?>("PrixTotal")
+                        .HasColumnType("real");
 
                     b.Property<float?>("PrixU")
                         .HasColumnType("real");
@@ -204,13 +237,18 @@ namespace fruit_manager_app.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<string>("NbrArticle")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NbrArticle")
+                        .HasColumnType("int");
 
                     b.Property<double?>("Sommes")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.ToTable("Stats");
                 });
@@ -228,6 +266,15 @@ namespace fruit_manager_app.Migrations
                     b.Navigation("Client");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("DemoAspNet.Models.Facture", b =>
+                {
+                    b.HasOne("DemoAspNet.Models.Client", "Client")
+                        .WithMany("Factures")
+                        .HasForeignKey("ClientId");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("DemoAspNet.Models.Panier", b =>
@@ -263,11 +310,24 @@ namespace fruit_manager_app.Migrations
                     b.Navigation("Seller");
                 });
 
+            modelBuilder.Entity("DemoAspNet.Models.Stat", b =>
+                {
+                    b.HasOne("DemoAspNet.Models.Client", "Client")
+                        .WithMany("Stats")
+                        .HasForeignKey("ClientId");
+
+                    b.Navigation("Client");
+                });
+
             modelBuilder.Entity("DemoAspNet.Models.Client", b =>
                 {
                     b.Navigation("ClientProducts");
 
+                    b.Navigation("Factures");
+
                     b.Navigation("Paniers");
+
+                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("DemoAspNet.Models.Panier", b =>

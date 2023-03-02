@@ -4,11 +4,28 @@
 @{
     Layout = "_ClientPage";
 }
-<h1 class="pb-3">Client - Listes de factures</h1>
-<div class="d-flex">
-    <a href="~/Home" class="btn btn-primary mx-auto w-50" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DemoAspNet.Models.Client 
 
-</div>
+<h1 class="pb-3">Client - Listes de factures</h1>
+<a href="~/Home/ClientPage" class="btn btn-primary mx-auto w-100" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
+
+
+   
+
+    <form asp-action="MessageC" method="post">
+        <div class="container m-3">
+            <div class="row">
+
+            
+                <i class="bi bi-product-fill p-3 m-3 text-warning"></i>Votre solde actuel : @Model.Solde <b />
+                <div class="col"><input asp-for="Solde" type="text" class="form-control  m-3" placeholder="solde..." /></div>
+
+                <div class="col"><button type="submit" class="btn btn-success w-100 m-3"><i class="bi bi-search"></i> Alimenter le solde</button></div>
+            </div>
+        </div>
+    </form>
+
 
 <div>
 

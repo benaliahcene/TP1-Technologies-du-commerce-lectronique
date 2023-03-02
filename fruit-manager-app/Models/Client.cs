@@ -16,6 +16,10 @@ namespace DemoAspNet.Models
         public ICollection<ClientProduct>? ClientProducts { get; set; }
 
         public ICollection<Panier>? Paniers { get; set; }
+        public ICollection<Facture>? Factures { get; set; }
+		public ICollection<Stat>? Stats { get; set; }
 
-    }
+
+
+	}
 }

@@ -9,6 +9,8 @@ namespace fruit_manager_app
         public DbSet<DemoAspNet.Models.Seller> sellers { get; set; }
         public DbSet<DemoAspNet.Models.Stat> Stats { get; set; }
         public DbSet<DemoAspNet.Models.Panier> Paniers { get; set; }
+        public DbSet<DemoAspNet.Models.Facture> Factures { get; set; }
+
 
 
 

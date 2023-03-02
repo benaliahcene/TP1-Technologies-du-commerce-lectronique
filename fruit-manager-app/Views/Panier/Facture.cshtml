@@ -1,0 +1,39 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	Layout = "_ClientPage";
+	ViewBag.Title = ViewBag.Title;
+}
+
+@using DemoAspNet.Controllers;
+@using DemoAspNet.Models;
+
+@model DemoAspNet.Models.Panier
+@{
+	float? total = 0;
+}
+
+<h1 class="pb-3">Facture</h1>
+<div class="d-flex">
+
+	<a href="~/Home/clientpage" class="btn btn-primary mx-auto w-50" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
+
+</div>
+<br />
+<div class="row p-5">
+	<table class="table">
+			@foreach (DemoAspNet.Models.Facture facture in ViewBag.Paniers)
+			{
+			<tr>
+				<td scope="col">@facture.Title</td>
+				<td scope="col">@facture.PrixU</td>
+				<td scope="col">@facture.Quantite</td>
+				<td scope="col">@facture.PrixT</td>
+			</tr>
+			total = total + facture.PrixT;
+			}
+	</table>
+
+	<br />
+	<p class="text-lg-end">Prix total : <b>@total</b> </p>
+
+</div>

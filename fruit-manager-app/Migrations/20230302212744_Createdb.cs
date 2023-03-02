@@ -5,7 +5,7 @@
 namespace fruit_manager_app.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateBd : Migration
+    public partial class Createdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,17 +40,25 @@ namespace fruit_manager_app.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stats",
+                name: "Factures",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Sommes = table.Column<double>(type: "float", nullable: true),
-                    NbrArticle = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrixU = table.Column<float>(type: "real", nullable: true),
+                    Quantite = table.Column<int>(type: "int", nullable: true),
+                    PrixT = table.Column<float>(type: "real", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stats", x => x.Id);
+                    table.PrimaryKey("PK_Factures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Factures_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -63,6 +71,7 @@ namespace fruit_manager_app.Migrations
                     Vendeur = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PrixU = table.Column<float>(type: "real", nullable: true),
                     Quantite = table.Column<int>(type: "int", nullable: true),
+                    PrixTotal = table.Column<float>(type: "real", nullable: true),
                     ClientId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -70,6 +79,26 @@ namespace fruit_manager_app.Migrations
                     table.PrimaryKey("PK_Paniers", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Paniers_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stats",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sommes = table.Column<double>(type: "float", nullable: true),
+                    NbrArticle = table.Column<int>(type: "int", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stats", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Stats_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id");
@@ -160,6 +189,11 @@ namespace fruit_manager_app.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Factures_ClientId",
+                table: "Factures",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PanierProduct_PanierId",
                 table: "PanierProduct",
                 column: "PanierId");
@@ -178,6 +212,11 @@ namespace fruit_manager_app.Migrations
                 name: "IX_Products_SellerId",
                 table: "Products",
                 column: "SellerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stats_ClientId",
+                table: "Stats",
+                column: "ClientId");
         }
 
         /// <inheritdoc />
@@ -185,6 +224,9 @@ namespace fruit_manager_app.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ClientProduct");
+
+            migrationBuilder.DropTable(
+                name: "Factures");
 
             migrationBuilder.DropTable(
                 name: "PanierProduct");

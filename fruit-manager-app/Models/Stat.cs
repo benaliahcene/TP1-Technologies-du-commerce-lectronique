@@ -8,9 +8,11 @@ namespace DemoAspNet.Models
     public class Stat
     {
         public int? Id { get; set; }
-        public double? Sommes { get; set; }
-        public string? NbrArticle { get; set; }
+        public float? Sommes { get; set; }
+        public int? NbrArticle { get; set; }
+		public int? ClientId { get; set; }
+		public Client? Client { get; set; }
 
 
-    }
+	}
 }

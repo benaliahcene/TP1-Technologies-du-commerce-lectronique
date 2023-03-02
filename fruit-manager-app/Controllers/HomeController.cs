@@ -2,6 +2,7 @@
 using fruit_manager_app;
 using Intercom.Core;
 using Intercom.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -15,6 +16,8 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Page des produits";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+/*            List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
+*/
             List<Models.Product> products = tpAspNetDbContext.Products.ToList();
             ViewBag.Products = products;
             return View();
@@ -27,8 +30,8 @@ namespace DemoAspNet.Controllers
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Product> products = tpAspNetDbContext.Products.ToList();
-
-            return View(products);
+            ViewBag.Products = products;
+            return View();
         }
 
 
@@ -57,6 +60,7 @@ namespace DemoAspNet.Controllers
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Client> clients = tpAspNetDbContext.Clients.ToList();
+
             ViewBag.Clients = clients;
             return View();
         }
@@ -175,11 +179,12 @@ namespace DemoAspNet.Controllers
         //eferf
         public IActionResult ClientPage(Models.Client client)
         {
-            ViewBag.Title = "Page client "; Console.WriteLine(client.Nom); Console.WriteLine(client.Id);
+            ViewBag.Title = "Page client ";
             ViewBag.Nom = client.Nom;
-
+            Console.WriteLine(client.Nom);
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Product> products = tpAspNetDbContext.Products.ToList();
+            HttpContext.Session.SetString("ahcene",client.Id.ToString());
 
             ViewBag.Products = products;
 
@@ -196,7 +201,10 @@ namespace DemoAspNet.Controllers
         public IActionResult ClientListeFactures()
         {
             ViewBag.Title = "Factures ";
-            return View();
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+            return View(client);
         }
 
         // hello test
@@ -247,64 +255,36 @@ namespace DemoAspNet.Controllers
 
             return View(match_products);
         }
-        [HttpGet]
-        [Route("Home/RemoveProduct/{Id:int}")]
-        public IActionResult RemoveProduct(int Id)
-        {
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
-            tpAspNetDbContext.Products.Remove(product);
-            tpAspNetDbContext.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-        [HttpGet]
-        [Route("Home/panierproduct/{Id:int}")]
-        public IActionResult PanierProduct(int Id)
-        {
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
-            Models.Panier panier = new Panier();
-            /*            panier.Id = product.Id;
-            */
-            panier.Vendeur = product.Vendeur;
-            panier.PrixU = (float)product.Prix;
-            panier.Title = product.Title;
-            panier.Quantite = 1;
-            tpAspNetDbContext.Paniers.Add(panier);
-            tpAspNetDbContext.SaveChanges();
-
-            return RedirectToAction("Panier");
-        }
-        [HttpGet]
-        [Route("Home/RemoveProductPanier/{Id:int}")]
-        public IActionResult RemoveProductPanier(int Id)
-        {
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Panier panier = tpAspNetDbContext.Paniers.Find(Id); Console.WriteLine(Id);
-            tpAspNetDbContext.Paniers.Remove(panier);
-            tpAspNetDbContext.SaveChanges();
-
-            return RedirectToAction("Panier");
-        }
-        [HttpGet]
-        [Route("~/Home/paiment/{PrixU:float}")]
-        public IActionResult paiment( float PrixU)
+     
+    /*    [HttpPost]
+        public IActionResult Paiement( float PrixU)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             Models.Stat stat =new Stat();
             stat.NbrArticle = "1";
             stat.Sommes = PrixU;
+            Console.WriteLine("teho");
             tpAspNetDbContext.Stats.Add(stat);
             tpAspNetDbContext.SaveChanges();
 
 
             return RedirectToAction("StatClient");
-        }
+        }*/
         public IActionResult Facture(int Id)
         {
         return View();  
         }
+        [HttpPost]
+        public IActionResult MessageC(int id, float solde)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Client client = tpAspNetDbContext.Clients.Find(id);
+            client.Solde=client.Solde+solde;
+            tpAspNetDbContext.SaveChanges();
+            return View();
+        }
+        
+        
     }
 
 }

@@ -14,14 +14,19 @@
 <form asp-action="ClientPage">
     <div class="container p-3">
         <div class="row">
-            <select asp-for="Nom" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select asp-for="Id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
 
                 @foreach (DemoAspNet.Models.Client client in ViewBag.Clients)
                 {
-                    <option value="@client.Nom">@client.Nom</option>
+                    <option value="@client.Id">@client.Nom</option>
+                }
+            </select>
+            
+             @foreach (DemoAspNet.Models.Client client in ViewBag.Clients)
+                {
+                    <input asp-for="Nom" type="hidden" value="@client.Nom">
                 }
 
-            </select>
         </div>
         <div class="input-group-prepend">
             <div class="col">

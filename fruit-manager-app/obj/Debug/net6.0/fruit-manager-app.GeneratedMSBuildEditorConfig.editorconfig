@@ -48,16 +48,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UHJvZmlsVmVuZGV1ci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/Facture.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYWN0dXJlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/Panier.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYW5pZXIuY3NodG1s
+[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/MessageC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZXNzYWdlQy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ProductsPage.cshtml]
@@ -82,6 +78,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/StatClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0Q2xpZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Panier/Facture.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuaWVyXEZhY3R1cmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Panier/Panier.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuaWVyXFBhbmllci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Card.cshtml]
