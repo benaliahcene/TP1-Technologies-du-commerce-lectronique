@@ -30,6 +30,10 @@ namespace fruit_manager_app.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
+                    b.Property<string>("Mdp")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nom")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -98,6 +102,33 @@ namespace fruit_manager_app.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("Factures");
+                });
+
+            modelBuilder.Entity("DemoAspNet.Models.FactureSeller", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<string>("Client")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("FactureClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SellerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SellerId");
+
+                    b.ToTable("FactureSellers");
                 });
 
             modelBuilder.Entity("DemoAspNet.Models.Panier", b =>
@@ -219,6 +250,10 @@ namespace fruit_manager_app.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
+                    b.Property<string>("Mdp")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nom")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -307,6 +342,15 @@ namespace fruit_manager_app.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("DemoAspNet.Models.FactureSeller", b =>
+                {
+                    b.HasOne("DemoAspNet.Models.Seller", "Seller")
+                        .WithMany("FactureSellers")
+                        .HasForeignKey("SellerId");
+
+                    b.Navigation("Seller");
+                });
+
             modelBuilder.Entity("DemoAspNet.Models.Panier", b =>
                 {
                     b.HasOne("DemoAspNet.Models.Client", "Client")
@@ -383,6 +427,8 @@ namespace fruit_manager_app.Migrations
 
             modelBuilder.Entity("DemoAspNet.Models.Seller", b =>
                 {
+                    b.Navigation("FactureSellers");
+
                     b.Navigation("Products");
 
                     b.Navigation("StatSellers");
