@@ -10,6 +10,8 @@ namespace fruit_manager_app
         public DbSet<DemoAspNet.Models.Stat> Stats { get; set; }
         public DbSet<DemoAspNet.Models.Panier> Paniers { get; set; }
         public DbSet<DemoAspNet.Models.Facture> Factures { get; set; }
+		public DbSet<DemoAspNet.Models.StatSeller> StatSellers { get; set; }
+		public DbSet<DemoAspNet.Models.FactureSeller> FactureSellers { get; set; }
 
 
 
@@ -17,7 +19,9 @@ namespace fruit_manager_app
 
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder DbContextOptionsBuilder)
+
+
+		protected override void OnConfiguring(DbContextOptionsBuilder DbContextOptionsBuilder)
         {
             string connection_string = "Data Source=DESKTOP-4MISVQS\\SQLEXPRESS02;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             string database_TP = "database";

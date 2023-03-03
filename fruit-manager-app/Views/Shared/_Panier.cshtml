@@ -13,10 +13,15 @@
 		<div class="col-md-11">
 			<div class="card ">
 				<div class="card-body">
+					<div class="col">
+						<img width="100" src="@Model.URLimg">
+					</div>
 					<form asp-action="Paiement" method="post">
 						<h5 class="card-title">@Model.Title</h5>
 						<h6 class="card-subtitle mb-2 text-muted">@Model.Vendeur</h6>
 						<h6 class="card-subtitle mb-2 text-muted">@Model.PrixU</h6>
+						<input asp-for="ClientId" type="hidden" value="@Model.ClientId">
+						<input asp-for="SellerId" type="hidden" value="@Model.SellerId">
 						<input asp-for="Title" type="hidden" value="@Model.Title">
 						<input asp-for="Id" type="hidden" value="@Model.Id">
 						<input asp-for="PrixU" type="hidden" value="@Model.PrixU">

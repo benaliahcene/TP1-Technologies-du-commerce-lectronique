@@ -10,7 +10,12 @@
 @model  DemoAspNet.Models.Client;
 
 <h1 class="pb-3">Client - connexion</h1>
-
+@if (TempData["AlertMessage"] != null)
+{
+	<script>
+		alert('@TempData["AlertMessage"]');
+	</script>
+}
 <form asp-action="ClientPage">
     <div class="container p-3">
         <div class="row">
@@ -21,16 +26,14 @@
                     <option value="@client.Id">@client.Nom</option>
                 }
             </select>
-            
-             @foreach (DemoAspNet.Models.Client client in ViewBag.Clients)
-                {
-                    <input asp-for="Nom" type="hidden" value="@client.Nom">
-                }
+
+            <div class="col m-3"><input asp-for="Mdp" type="password" class="form-control" placeholder="Password ..." /></div>
+
 
         </div>
         <div class="input-group-prepend">
             <div class="col">
-                <button type="submit" class="btn btn-success w-100 p-3"><i class="bi bi-search"></i>Se connecter</button>
+                <button type="submit" class="btn btn-success w-100 p-3 m-3"><i class="bi bi-search"></i>Se connecter</button>
             </div>
         </div>
     </div>

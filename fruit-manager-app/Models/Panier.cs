@@ -11,8 +11,11 @@ namespace DemoAspNet.Models
         public float? PrixU { get; set; }
         public int? Quantite { get; set; }
         public float? PrixTotal { get; set; }
-        // relations
-        public int? ClientId { get; set; }
+		public string? URLimg { get; set; }
+        public int? SellerId { get; set; }
+
+		// relations
+		public int? ClientId { get; set; }
         public Client? Client { get; set; }
         public ICollection<PanierProduct>? PanierProducts { get; set; }
 

@@ -21,7 +21,7 @@
 </div>
 
 
-<form asp-action="Results">
+<form asp-action="ResultsIndex">
     <div class="container">
         <div class="row">
             <div class="col"><input asp-for="Title" type="text" class="form-control" placeholder="Titre ..." /></div>
@@ -37,7 +37,7 @@
     @foreach (DemoAspNet.Models.Product product in ViewBag.Products)
     {
         <div class="col">
-            <partial name="_Card" model="product" />
+            <partial name="_Cardindex" model="product" />
         </div>
     }
 </div>

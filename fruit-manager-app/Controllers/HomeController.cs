@@ -82,7 +82,12 @@ namespace DemoAspNet.Controllers
         }
         public IActionResult AddProduct(Models.Product product)
         {
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			string id = HttpContext.Session.GetString("vendeur");
+
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id));
+			product.SellerId = Convert.ToInt32(id);
+            product.Vendeur = seller.Nom;
             tpAspNetDbContext.Products.Add(product);
             tpAspNetDbContext.SaveChanges();
 
@@ -96,7 +101,7 @@ namespace DemoAspNet.Controllers
             ViewBag.Title = "Vendeur - connexion";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             List<Models.Seller> Sell = tpAspNetDbContext.sellers.ToList();
-            ViewBag.Sellers = Sell;
+			ViewBag.Sellers = Sell;
 
             return View();
         }
@@ -180,23 +185,32 @@ namespace DemoAspNet.Controllers
         public IActionResult ClientPage(Models.Client client)
         {
             ViewBag.Title = "Page client ";
-            ViewBag.Nom = client.Nom;
-            Console.WriteLine(client.Nom);
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
-            HttpContext.Session.SetString("ahcene",client.Id.ToString());
 
-            ViewBag.Products = products;
+			HttpContext.Session.SetString("ahcene", client.Id.ToString());
+            Console.Write(client.Id);
+            Models.Client client1= tpAspNetDbContext.Clients.Find(client.Id);
+            if(client1.Mdp.Equals(client.Mdp))
+            {
+                ViewBag.Nom = client1.Nom;
+                Console.WriteLine(client1.Nom);
+                List<Models.Product> products = tpAspNetDbContext.Products.ToList();
 
-            return View();
+                ViewBag.Products = products;
+
+                return View();
+            }
+            TempData["AlertMessage"] = "Mot de passe incorrect !!";
+            return RedirectToAction("ClientLogin");
         }
         public IActionResult StatClient()
         {
             ViewBag.Title = "Statistiques ";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            List<Models.Stat> Stats = tpAspNetDbContext.Stats.ToList();
-            return View(Stats);
+			string id = HttpContext.Session.GetString("ahcene");
+			List<Models.Stat> Stats = tpAspNetDbContext.Stats.Where(c => c.ClientId == Convert.ToInt32(id)).ToList();
+			return View(Stats);
         }
         public IActionResult ClientListeFactures()
         {
@@ -209,8 +223,13 @@ namespace DemoAspNet.Controllers
 
         // hello test
         public IActionResult SellerListeFactures()
-        {
-            ViewBag.Title = "Factures ";
+		{
+			ViewBag.Title = "Factures ";
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			string id = HttpContext.Session.GetString("vendeur");
+            Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id);
+			List<Models.FactureSeller> factures = tpAspNetDbContext.FactureSellers.Where(c => c.SellerId == Convert.ToInt32(id)).ToList();
+			ViewBag.Factures= factures;
             return View();
         }
 
@@ -222,19 +241,38 @@ namespace DemoAspNet.Controllers
 
             if (user_product.Id > 0)
             {
-                ViewBag.Nom_Vendeur = user_product.Nom;
-                ViewBag.Id_Vendeur = user_product.Id;
-                Console.WriteLine(user_product.Nom);
-                List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
-                ViewBag.Products = products;
-                return View();
-            }
-            return RedirectToAction("SellerLogin");
+				HttpContext.Session.SetString("vendeur", user_product.Id.ToString());
+				Models.Seller seller = tpAspNetDbContext.sellers.Find(user_product.Id);
+                if (seller.Mdp.Equals(user_product.Mdp))
+                {
+					ViewBag.Nom_Vendeur = seller.Nom;
+					ViewBag.Id_Vendeur = seller.Id;
+					Console.WriteLine(seller.Nom);
+					List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
+
+					ViewBag.Products = products;
+					return View();
+				}
+
+				TempData["AlertMessage"] = "Mot de passe incorrect !!";
+				return RedirectToAction("SellerLogin");
+			}
+			TempData["AlertMessage"] = "veuillez choisir le vendeur !!";
+			return RedirectToAction("SellerLogin");
 
 
         }
+		public IActionResult StatSeller()
+		{
+			string id = HttpContext.Session.GetString("vendeur");
 
-        [HttpPost]
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			List<Models.StatSeller> statSellers = tpAspNetDbContext.StatSellers.Where(c => c.SellerId == Convert.ToInt32(id)).ToList();
+			ViewBag.StatSeller = statSellers;
+			return View();
+		}
+
+		[HttpPost]
         public IActionResult Results(Models.Product user_product)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
@@ -255,37 +293,60 @@ namespace DemoAspNet.Controllers
 
             return View(match_products);
         }
-     
-    /*    [HttpPost]
-        public IActionResult Paiement( float PrixU)
+        [HttpPost]
+        public IActionResult ResultsIndex(Models.Product user_product)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Stat stat =new Stat();
-            stat.NbrArticle = "1";
-            stat.Sommes = PrixU;
-            Console.WriteLine("teho");
-            tpAspNetDbContext.Stats.Add(stat);
-            tpAspNetDbContext.SaveChanges();
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
+            List<Models.Product> match_products = new List<Models.Product>();
 
+            user_product.Title = String.IsNullOrEmpty(user_product.Title) ? String.Empty : user_product.Title;
+            user_product.Vendeur = String.IsNullOrEmpty(user_product.Vendeur) ? String.Empty : user_product.Vendeur;
+            user_product.Categorie = String.IsNullOrEmpty(user_product.Categorie) ? String.Empty : user_product.Categorie;
 
-            return RedirectToAction("StatClient");
-        }*/
+            foreach (Models.Product product in products)
+            {
+                if (product.Title.Contains(user_product.Title) && product.Vendeur.Contains(user_product.Vendeur) && product.Categorie.Contains(user_product.Categorie))
+                {
+                    match_products.Add(product);
+                }
+            }
+
+            return View(match_products);
+        }
+
         public IActionResult Facture(int Id)
         {
         return View();  
         }
         [HttpPost]
-        public IActionResult MessageC(int id, float solde)
+        public IActionResult MessageC(int Id, float solde)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Client client = tpAspNetDbContext.Clients.Find(id);
+            Models.Client client = tpAspNetDbContext.Clients.Find(Id);
             client.Solde=client.Solde+solde;
             tpAspNetDbContext.SaveChanges();
             return View();
         }
-        
-        
-    }
+        public IActionResult Facture()
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+
+            return View();
+        }
+
+		[HttpGet]
+		[Route("Home/voirfacture/{Id:int}")]
+		public IActionResult RemoveProductPanier(int Id)
+		{
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			Models.Facture facture = tpAspNetDbContext.Factures.Find(Id); Console.WriteLine(Id);
+
+            TempData["AlertMessage"] = $"titre : {facture.Title} , somme : {facture.PrixT}$  quantite: {facture.Quantite}.";
+			return RedirectToAction("SellerListeFactures");
+		}
+
+	}
 
 }
 

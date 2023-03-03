@@ -22,7 +22,11 @@
         <input class="form-control" type="text" asp-for="Prenom" />
         <span asp-validation-for="Prenom" class="text-danger"></span>
     </div>
-
+    <div class="form-group">
+        <label class="form-label" asp-for="Mdp">Mot de passe</label>
+        <input class="form-control" type="password" asp-for="Mdp" />
+        <span asp-validation-for="Mdp" class="text-danger"></span>
+    </div>
    
 
     <button type="submit" class="btn btn-primary mt-3 w-100">Creation</button>

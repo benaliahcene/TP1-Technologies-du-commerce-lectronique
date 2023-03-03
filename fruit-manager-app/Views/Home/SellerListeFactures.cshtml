@@ -4,11 +4,46 @@
 @{
     Layout = "_SellerPage";
 }
-<h1 class="pb-3">Client - Listes de factures</h1>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	
+	ViewBag.Title = ViewBag.Title;
+}
+
+@using DemoAspNet.Controllers;
+@using DemoAspNet.Models;
+
+@model DemoAspNet.Models.FactureSeller
+<h1 class="pb-3">Vendeur - Listes de factures</h1>
 <div class="d-flex">
-    <a href="~/Home" class="btn btn-primary mx-auto w-50" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
-
+    <a href="~/Home/SellerPage" class="btn btn-primary mx-auto w-50" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
 </div>
 
-<div>
+<br />
+<div class="row p-5">
+	<table class="table">
+		<tr>
+			<td scope="col"><b>Date</b></td>
+			<td scope="col"><b>Client</b></td>
+			<td scope="col"><b>Action</b></td>
+		</tr>
+		@foreach (DemoAspNet.Models.FactureSeller facture in ViewBag.Factures)
+		{
+			<tr>
+				<td scope="col">@facture.Date</td>
+				<td scope="col">@facture.Client</td>
+				<td scope="col">
+					<a class="btn btn-success w-100 p-3" href="~/home/voirfacture/@facture.FactureClientId" role="button">Voir</a>
+				</td>
+			</tr>
+		
+		}
+	</table>
 </div>
+
+@if (TempData["AlertMessage"] != null)
+{
+	<script>
+		alert('@TempData["AlertMessage"]');
+	</script>
+}

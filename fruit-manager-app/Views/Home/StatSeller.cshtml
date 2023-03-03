@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	Layout = "_SellerPage";
+	ViewBag.Title = ViewBag.Title;
+}
+
+@using DemoAspNet.Controllers;
+@using DemoAspNet.Models;
+
+@model DemoAspNet.Models.StatSeller
+@{
+	float? total_1 = 0;
+	float? total_2= 0;
+	float? total_3 = 0;
+
+}
+
+<h1 class="pb-3">Vendeur - statistiques</h1>
+<div class="d-flex">
+
+	<a href="~/Home/sellerpage" class="btn btn-primary mx-auto w-50" role="button"><i class="bi bi-box-arrow-left"></i> Retour</a>
+
+</div>
+<br />
+<div class="row p-5">
+	<table class="table">
+		@foreach (DemoAspNet.Models.StatSeller statSeller in ViewBag.StatSeller)
+		{
+			<tr>
+				<td scope="col">@statSeller.SommesR</td>
+				<td scope="col">@statSeller.Benefice</td>
+				<td scope="col">@statSeller.NbrArticleV</td>
+			</tr>
+			total_1 = total_1 + statSeller.SommesR;
+			total_2 = total_2 + statSeller.Benefice;
+			total_3 = total_3 + statSeller.NbrArticleV;
+
+		}
+	</table>
+
+	<br />
+	<p class="text-lg-end">Total des sommes recues : <b>@total_1</b> CAD$ </p>
+	<p class="text-lg-end">Total Béenifice (15% ): <b>@total_2</b>CAD$ </p>
+	<p class="text-lg-end">Total Nombre d'articles vendus : <b>@total_3</b> CAD$</p>
+
+
+</div>

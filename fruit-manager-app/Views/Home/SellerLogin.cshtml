@@ -9,12 +9,18 @@
 @using DemoAspNet.Models;
 
 @model Seller;
+@if (TempData["AlertMessage"] != null)
+{
+	<script>
+		alert('@TempData["AlertMessage"]');
+	</script>
+}
 
 <h1 class="pb-3">Vendeur - connexion</h1>
 			<form method="POST" asp-action="SellerPage">
 
 				<div class="form-group row">
-					<div class="col">
+					<div class="col p-3 m-3">
 							<select asp-for="Id" class="form-select form-select-lg mb-3">
 							<option value="">Choisir ...</option>
 							@foreach (Seller seller in ViewBag.Sellers)
@@ -22,14 +28,12 @@
 								<option value="@seller.Id">@seller.Nom</option>
 							}
 						</select>
-							@foreach (Seller seller in ViewBag.Sellers)
-							{
-								<input asp-for="Nom" type="hidden" value="@seller.Nom">
-							}
+			<div class="col"><input asp-for="Mdp" type="password" class="form-control p-3 m-3" placeholder="Password ..." /></div>
+
 						</div>
 				</div>
 				<div class="col">
-		              <button type="submit" class="btn btn-success btn-block  w-100 p-3">
+		              <button type="submit" class="btn btn-success btn-block  w-100 p-3 m-3">
 			Se connecter
 					</button>
 		<div class="form-group row">
@@ -42,10 +46,10 @@
 
 
 <div class="input-group-prepend">
-	<a href="~/Home/Addseller" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left"></i>Créer un nouveau compte</a>
+	<a href="~/Home/Addseller" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left m-3 p-3"></i>Créer un nouveau compte</a>
 </div>
 <div class="input-group-prepend">
-	<a href="~/Home/clientlogin" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left"></i> Aller a l'interface client</a>
+	<a href="~/Home/clientlogin" class="btn btn-outline-secondary w-100 p-3" role="button"><i class="bi bi-box-arrow-left m-3 p-3"></i> Aller a l'interface client</a>
 </div>
 
 

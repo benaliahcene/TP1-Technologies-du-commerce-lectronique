@@ -12,15 +12,14 @@
     <link href="~/css/site.min.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 m-3">
         <div class="container">
             <a class="navbar-brand" href="~/home/clientlogin">Déconnexion</a>
 
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="~/home/ProductsPage">Produits</a>
-                <a class="nav-item nav-link" href="~/home/clientlistefactures">Facutres</a>
-                <a class="nav-item nav-link" href="~/panier/facture">Derniere facture</a>
-
+                <a class="nav-item nav-link" href="~/home/clientlistefactures">Alimenter le solde</a>
+                <a class="nav-item nav-link" href="~/panier/facture">Factures</a>
                 <a class="nav-item nav-link" href="~/home/EditProfilClient">Profil</a>
                 <a class="nav-item nav-link" href="~/panier/panier">Panier </a>
                 <a class="nav-item nav-link" href="~/home/StatClient">Statiques</a>
@@ -28,7 +27,7 @@
             </div>
         </div>
     </nav>
-  @*  <h3>@Model.Prenom @Model.Nom</h3>*@
+
     <h3>Welcome @ViewBag.Nom</h3>
 
     <div class="container-fluid p-5 w-100">

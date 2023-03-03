@@ -120,7 +120,13 @@ namespace fruit_manager_app.Migrations
                     b.Property<int?>("Quantite")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SellerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URLimg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vendeur")
@@ -250,6 +256,33 @@ namespace fruit_manager_app.Migrations
                     b.ToTable("Stats");
                 });
 
+            modelBuilder.Entity("DemoAspNet.Models.StatSeller", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<float?>("Benefice")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("NbrArticleV")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SellerId")
+                        .HasColumnType("int");
+
+                    b.Property<float?>("SommesR")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SellerId");
+
+                    b.ToTable("StatSellers");
+                });
+
             modelBuilder.Entity("DemoAspNet.Models.ClientProduct", b =>
                 {
                     b.HasOne("DemoAspNet.Models.Client", "Client")
@@ -316,6 +349,15 @@ namespace fruit_manager_app.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("DemoAspNet.Models.StatSeller", b =>
+                {
+                    b.HasOne("DemoAspNet.Models.Seller", "Seller")
+                        .WithMany("StatSellers")
+                        .HasForeignKey("SellerId");
+
+                    b.Navigation("Seller");
+                });
+
             modelBuilder.Entity("DemoAspNet.Models.Client", b =>
                 {
                     b.Navigation("ClientProducts");
@@ -342,6 +384,8 @@ namespace fruit_manager_app.Migrations
             modelBuilder.Entity("DemoAspNet.Models.Seller", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("StatSellers");
                 });
 #pragma warning restore 612, 618
         }

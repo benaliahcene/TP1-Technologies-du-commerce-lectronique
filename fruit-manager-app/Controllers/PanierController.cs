@@ -53,11 +53,12 @@ namespace DemoAspNet.Controllers
             /*            panier.ClientId = int.Parse((id),CultureInfo.InvariantCulture.NumberFormat);
             */
             panier.ClientId = (int?)Convert.ToInt32((id), CultureInfo.InvariantCulture.NumberFormat);
-            
+            panier.URLimg = product.URLimg;
             panier.Vendeur = product.Vendeur;
             panier.PrixU = (float)product.Prix;
             panier.PrixTotal = (float)panier.PrixU;
             panier.Title = product.Title;
+            panier.SellerId = product.SellerId;
             panier.Quantite = 1;
             tpAspNetDbContext.Paniers.Add(panier);
             tpAspNetDbContext.SaveChanges();
@@ -77,40 +78,62 @@ namespace DemoAspNet.Controllers
         }
 
         [HttpPost]
-        public IActionResult Paiement(string Title,int Quantite, int Id, float PrixU)
+        public IActionResult Paiement(int ClientId,int SellerId,string Title,int Quantite, int Id, float PrixU)
         {
-            Console.WriteLine(Title); 
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Panier panier = tpAspNetDbContext.Paniers.Find(Id);
-			HttpContext.Session.SetString("ceFacture", Id.ToString());
-			panier.PrixTotal = Quantite * PrixU; 
-            panier.Quantite = Quantite;
-            tpAspNetDbContext.SaveChanges();
-            panier.Title= Title;
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			Models.Client client = tpAspNetDbContext.Clients.Find(ClientId);
+            if (client.Solde > Quantite * PrixU)
+            {
+                Console.WriteLine(Title);
+                Models.Panier panier = tpAspNetDbContext.Paniers.Find(Id);
+                HttpContext.Session.SetString("ceFacture", Id.ToString());
+                panier.PrixTotal = Quantite * PrixU;
+                panier.Quantite = Quantite;
+                tpAspNetDbContext.SaveChanges();
+                panier.Title = Title;
 
-            //Effacer le produit du panier
-            Models.Facture facture = new Models.Facture();
-            facture.Id = Id;
-            facture.Quantite = Quantite;
-            facture.PrixU = PrixU;
-            facture.PrixT= Quantite * PrixU;
-            facture.Title= Title;
-            facture.ClientId = panier.ClientId;
-            tpAspNetDbContext.Factures.Add(facture);
-            tpAspNetDbContext.Paniers.Remove(panier);
-            Models.Stat stat= new Models.Stat();
-            stat.Id = Id;
-            stat.Sommes = Quantite * PrixU;
-            stat.NbrArticle = Quantite;
-            stat.ClientId = panier.ClientId;
-            tpAspNetDbContext.Stats.Add(stat);
+                //Effacer le produit du panier
+                Models.Facture facture = new Models.Facture();
+                facture.Id = Id;
+                facture.Quantite = Quantite;
+                facture.PrixU = PrixU;
+                facture.PrixT = Quantite * PrixU;
+                facture.Title = Title;
+                facture.ClientId = panier.ClientId;
+                tpAspNetDbContext.Factures.Add(facture);
+                tpAspNetDbContext.Paniers.Remove(panier);
+                Models.Stat stat = new Models.Stat();
+                stat.Id = Id;
+                stat.Sommes = Quantite * PrixU;
+                stat.NbrArticle = Quantite;
+                stat.ClientId = panier.ClientId;
+                tpAspNetDbContext.Stats.Add(stat);
+                Models.StatSeller statv = new Models.StatSeller();
+                statv.Id = SellerId;
+                statv.NbrArticleV = Quantite;
+                statv.SommesR = Quantite * PrixU;
+                statv.Benefice = (float?)(Quantite * PrixU * 0.15);
+                statv.SellerId = SellerId;
+                tpAspNetDbContext.StatSellers.Add(statv);
 
-			tpAspNetDbContext.SaveChanges();
-            // Enregistrer les informations du panier dans la base de donnees
-            return RedirectToAction("Facture");
-        }
+                Models.FactureSeller factureseller = new Models.FactureSeller();
+                factureseller.Id = SellerId;
+                factureseller.Date = DateTime.Today;
 
-        public IActionResult Facture()
+				factureseller.Client = client.Nom;
+                factureseller.FactureClientId = facture.Id;
+                factureseller.SellerId= SellerId;
+                tpAspNetDbContext.FactureSellers.Add(factureseller);
+
+				tpAspNetDbContext.SaveChanges();
+				return RedirectToAction("Facture");
+			}
+			TempData["AlertMessage"] = "Votre solde est insuffisant !! Veuillez le recharger d abord";
+			return RedirectToAction("ClientListeFactures", "Home");
+		
+		}
+
+		public IActionResult Facture()
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             string id = HttpContext.Session.GetString("ahcene");
@@ -121,6 +144,7 @@ namespace DemoAspNet.Controllers
       
             return View();
         }
+      
 
 
 
