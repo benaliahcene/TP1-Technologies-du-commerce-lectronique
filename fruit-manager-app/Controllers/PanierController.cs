@@ -18,6 +18,10 @@ namespace DemoAspNet.Controllers
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
 
             List<Models.Panier> paniers = tpAspNetDbContext.Paniers.Where(c => c.ClientId == Convert.ToInt32(id)).ToList();
             ViewBag.Products = paniers;
@@ -41,8 +45,12 @@ namespace DemoAspNet.Controllers
         public IActionResult PanierProduct(int Id)
         {
             HttpContext.Session.LoadAsync();
-            string id = HttpContext.Session.GetString("ahcene");
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
             Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
             Models.Panier panier = new Panier();
             /*  panier.Id = product.Id;  */
@@ -76,14 +84,28 @@ namespace DemoAspNet.Controllers
 
             return RedirectToAction("Panier");
         }
+		[HttpGet]
+		[Route("Home/RemoveProductSeller/{Id:int}")]
+		public IActionResult RemoveProductSeller(int Id)
+		{
+			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+			Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
+			tpAspNetDbContext.Products.Remove(product);
+			tpAspNetDbContext.SaveChanges();
 
-        [HttpPost]
+			return RedirectToAction("SellerPage", "Home");
+		}
+
+		[HttpPost]
         public IActionResult Paiement(int ClientId,int SellerId,string Title,int Quantite, int Id, float PrixU)
         {
 			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
 			Models.Client client = tpAspNetDbContext.Clients.Find(ClientId);
             if (client.Solde > Quantite * PrixU)
             {
+
+                ViewBag.Nom_Client = client.Nom;
+                ViewBag.Id_Client = client.Id;
                 Console.WriteLine(Title);
                 Models.Panier panier = tpAspNetDbContext.Paniers.Find(Id);
                 HttpContext.Session.SetString("ceFacture", Id.ToString());
@@ -124,7 +146,7 @@ namespace DemoAspNet.Controllers
                 factureseller.FactureClientId = facture.Id;
                 factureseller.SellerId= SellerId;
                 tpAspNetDbContext.FactureSellers.Add(factureseller);
-
+                client.Solde = client.Solde - facture.PrixT;
 				tpAspNetDbContext.SaveChanges();
 				return RedirectToAction("Facture");
 			}
@@ -137,7 +159,9 @@ namespace DemoAspNet.Controllers
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             string id = HttpContext.Session.GetString("ahcene");
-
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id)); Console.WriteLine(id);
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
             List<Models.Facture> factures = tpAspNetDbContext.Factures.Where(c => c.ClientId == Convert.ToInt32(id)).ToList();
             
             ViewBag.Paniers = factures;

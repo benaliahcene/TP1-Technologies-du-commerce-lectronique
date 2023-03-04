@@ -128,15 +128,21 @@ namespace DemoAspNet.Controllers
         public IActionResult EditProfilClient()
         {
             ViewBag.Title = "Modification du profil ";
-
-            return View();
-        }
-        public IActionResult EditProfilClients(string nom, string prenom, int id, float solde)
-        {
-            ViewBag.Title = "Modification du profil ";
+            string id = HttpContext.Session.GetString("ahcene");
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Client client = tpAspNetDbContext.Clients.Find(id); Console.WriteLine(id);
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id)); Console.WriteLine(id);
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
+            return View();
+        }
+        public IActionResult EditProfilClients(string nom, string prenom, float solde)
+        {
+            ViewBag.Title = "Modification du profil ";
+            string id = HttpContext.Session.GetString("ahcene");
+
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id)); Console.WriteLine(id);
             Console.WriteLine(client.Nom); Console.WriteLine(client.Prenom);
             client.Nom = nom;
             client.Prenom = prenom;
@@ -163,12 +169,15 @@ namespace DemoAspNet.Controllers
              return RedirectToAction("Index");
          }*/
 
-        public IActionResult EditProfilVendeur(string nom, string prenom, int id)
+        public IActionResult EditProfilVendeur(string nom, string prenom)
         {
-            ViewBag.Title = "Modification du profil ";
-
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-            Models.Seller seller = tpAspNetDbContext.sellers.Find(id); Console.WriteLine(id);
+
+            ViewBag.Title = "Modification du profil ";
+            string id = HttpContext.Session.GetString("vendeur");
+
+
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id)); Console.WriteLine(Convert.ToInt32(id));
             Console.WriteLine(seller.Nom); Console.WriteLine(seller.Prenom);
             seller.Nom = nom;
             seller.Prenom = prenom;
@@ -177,12 +186,33 @@ namespace DemoAspNet.Controllers
         }
         public IActionResult EditProfilVendeur()
         {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+
             ViewBag.Title = "Modification du profil ";
+            string id = HttpContext.Session.GetString("vendeur");
+
+
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id)); Console.WriteLine(Convert.ToInt32(id));
+            ViewBag.Nom_Vendeur = seller.Nom; Console.WriteLine("test", seller.Nom);
 
             return View();
         }
         //eferf
-        public IActionResult ClientPage(Models.Client client)
+        public IActionResult ClientPage(Models.Client uclient)
+        {
+            ViewBag.Title = "Page Client ";
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
+            Console.WriteLine(client.Nom);
+            List<Models.Product> products = tpAspNetDbContext.Products.ToList();
+            ViewBag.Products = products;
+            return View();
+
+        }
+        public IActionResult ClientPageT(Models.Client client)
         {
             ViewBag.Title = "Page client ";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
@@ -192,13 +222,7 @@ namespace DemoAspNet.Controllers
             Models.Client client1= tpAspNetDbContext.Clients.Find(client.Id);
             if(client1.Mdp.Equals(client.Mdp))
             {
-                ViewBag.Nom = client1.Nom;
-                Console.WriteLine(client1.Nom);
-                List<Models.Product> products = tpAspNetDbContext.Products.ToList();
-
-                ViewBag.Products = products;
-
-                return View();
+                return RedirectToAction("ClientPage",client);
             }
             TempData["AlertMessage"] = "Mot de passe incorrect !!";
             return RedirectToAction("ClientLogin");
@@ -208,8 +232,12 @@ namespace DemoAspNet.Controllers
             ViewBag.Title = "Statistiques ";
 
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-			string id = HttpContext.Session.GetString("ahcene");
-			List<Models.Stat> Stats = tpAspNetDbContext.Stats.Where(c => c.ClientId == Convert.ToInt32(id)).ToList();
+            string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
+            List<Models.Stat> Stats = tpAspNetDbContext.Stats.Where(c => c.ClientId == Convert.ToInt32(id)).ToList();
 			return View(Stats);
         }
         public IActionResult ClientListeFactures()
@@ -218,6 +246,9 @@ namespace DemoAspNet.Controllers
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
             string id = HttpContext.Session.GetString("ahcene");
             Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
             return View(client);
         }
 
@@ -226,47 +257,65 @@ namespace DemoAspNet.Controllers
 		{
 			ViewBag.Title = "Factures ";
 			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-			string id = HttpContext.Session.GetString("vendeur");
+            string id = HttpContext.Session.GetString("vendeur");
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Vendeur = seller.Nom;
             Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id); Console.WriteLine(id);
 			List<Models.FactureSeller> factures = tpAspNetDbContext.FactureSellers.Where(c => c.SellerId == Convert.ToInt32(id)).ToList();
 			ViewBag.Factures= factures;
             return View();
         }
+        public IActionResult SellerPageT(Models.Seller user_product)
+        {
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
 
+            if (user_product.Id > 0)
+            {
+                HttpContext.Session.SetString("vendeur", user_product.Id.ToString());
+
+                Models.Seller seller = tpAspNetDbContext.sellers.Find(user_product.Id);
+                if (seller.Mdp.Equals(user_product.Mdp))
+                {
+                    HttpContext.Session.SetString("mdp", user_product.Mdp.ToString());
+
+
+                    return RedirectToAction("SellerPage", user_product);
+                }
+
+                TempData["AlertMessage"] = "Mot de passe incorrect !!";
+                return RedirectToAction("SellerLogin");
+            }
+            TempData["AlertMessage"] = "veuillez choisir le vendeur !!";
+            return RedirectToAction("SellerLogin");
+
+
+        }
 
         public IActionResult SellerPage(Models.Seller user_product)
         {
             ViewBag.Title = "Page Vendeur ";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("vendeur");
+            string mdp = HttpContext.Session.GetString("mdp");
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id));
 
-            if (user_product.Id > 0)
-            {
-				HttpContext.Session.SetString("vendeur", user_product.Id.ToString());
-				Models.Seller seller = tpAspNetDbContext.sellers.Find(user_product.Id);
-                if (seller.Mdp.Equals(user_product.Mdp))
-                {
-					ViewBag.Nom_Vendeur = seller.Nom;
-					ViewBag.Id_Vendeur = seller.Id;
-					Console.WriteLine(seller.Nom);
-					List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
-
-					ViewBag.Products = products;
-					return View();
-				}
-
-				TempData["AlertMessage"] = "Mot de passe incorrect !!";
-				return RedirectToAction("SellerLogin");
-			}
-			TempData["AlertMessage"] = "veuillez choisir le vendeur !!";
-			return RedirectToAction("SellerLogin");
-
-
+            ViewBag.Nom_Vendeur = seller.Nom;
+            ViewBag.Id_Vendeur = seller.Id;
+            Console.WriteLine(seller.Nom);
+            List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == seller.Id).ToList();
+            ViewBag.Products = products;
+            return View();
+			
         }
 		public IActionResult StatSeller()
 		{
-			string id = HttpContext.Session.GetString("vendeur");
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("vendeur");
+            Models.Seller seller = tpAspNetDbContext.sellers.Find(Convert.ToInt32(id));
 
-			TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            ViewBag.Nom_Vendeur = seller.Nom;
+            ViewBag.Id_Vendeur = seller.Id;
 			List<Models.StatSeller> statSellers = tpAspNetDbContext.StatSellers.Where(c => c.SellerId == Convert.ToInt32(id)).ToList();
 			ViewBag.StatSeller = statSellers;
 			return View();
@@ -276,6 +325,11 @@ namespace DemoAspNet.Controllers
         public IActionResult Results(Models.Product user_product)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            string id = HttpContext.Session.GetString("ahcene");
+            Models.Client client = tpAspNetDbContext.Clients.Find(Convert.ToInt32(id));
+
+            ViewBag.Nom_Client = client.Nom;
+            ViewBag.Id_Client = client.Id;
             List<Models.Product> products = tpAspNetDbContext.Products.ToList();
             List<Models.Product> match_products = new List<Models.Product>();
 
@@ -315,10 +369,7 @@ namespace DemoAspNet.Controllers
             return View(match_products);
         }
 
-        public IActionResult Facture(int Id)
-        {
-        return View();  
-        }
+      
         [HttpPost]
         public IActionResult MessageC(int Id, float solde)
         {
@@ -328,12 +379,7 @@ namespace DemoAspNet.Controllers
             tpAspNetDbContext.SaveChanges();
             return View();
         }
-        public IActionResult Facture()
-        {
-            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-
-            return View();
-        }
+   
 
 		[HttpGet]
 		[Route("Home/voirfacture/{Id:int}")]
