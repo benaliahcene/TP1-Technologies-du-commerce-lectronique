@@ -16,8 +16,6 @@ namespace DemoAspNet.Controllers
         {
             ViewBag.Title = "Page des produits";
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
-/*            List<Models.Product> products = tpAspNetDbContext.Products.Where(c => c.SellerId == user_product.Id).ToList();
-*/
             List<Models.Product> products = tpAspNetDbContext.Products.ToList();
             ViewBag.Products = products;
             return View();
@@ -127,6 +125,7 @@ namespace DemoAspNet.Controllers
         // modification de compte client
         public IActionResult EditProfilClient()
         {
+          
             ViewBag.Title = "Modification du profil ";
             string id = HttpContext.Session.GetString("ahcene");
 
@@ -136,8 +135,14 @@ namespace DemoAspNet.Controllers
             ViewBag.Id_Client = client.Id;
             return View();
         }
-        public IActionResult EditProfilClients(string nom, string prenom, float solde)
+        public IActionResult EditProfilClients(string nom, string prenom)
         {
+            if (nom == null || prenom == null)
+            {
+                TempData["AlertMessage"] = "veuillez remplir tous les champs !!";
+
+                return RedirectToAction("EditProfilClient");
+            }
             ViewBag.Title = "Modification du profil ";
             string id = HttpContext.Session.GetString("ahcene");
 
@@ -146,33 +151,24 @@ namespace DemoAspNet.Controllers
             Console.WriteLine(client.Nom); Console.WriteLine(client.Prenom);
             client.Nom = nom;
             client.Prenom = prenom;
-            client.Solde = solde;
+         
             tpAspNetDbContext.SaveChanges();
             return RedirectToAction("ClientPage");
         }
 
 
         [HttpPost]
-        /* public IActionResult AddProduct(Models.Product product)
-         {
-             ViewBag.Title = "Ajouter un produit";
-
-             if (ModelState.IsValid)
-                 return RedirectToAction("Results", product);
-
-             return View();
-         }*/
-
-
-        /* public IActionResult Results()
-         {
-             return RedirectToAction("Index");
-         }*/
+  
 
         public IActionResult EditProfilVendeur(string nom, string prenom)
         {
             TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
 
+            if (nom == null || prenom== null)
+            {
+                TempData["AlertMessage"] = "veuillez remplir tous les champs !!";
+                return RedirectToAction("EditProfilVendeur");
+            }
             ViewBag.Title = "Modification du profil ";
             string id = HttpContext.Session.GetString("vendeur");
 
@@ -391,8 +387,22 @@ namespace DemoAspNet.Controllers
             TempData["AlertMessage"] = $"titre : {facture.Title} , somme : {facture.PrixT}$  quantite: {facture.Quantite}.";
 			return RedirectToAction("SellerListeFactures");
 		}
+      
+        public IActionResult EditProductProduct(string Title, int Id,int Nbr,float prix)
+        {
+            Console.WriteLine(Id+"  "+Title+Nbr+prix);
+            TpAspNetDbContext tpAspNetDbContext = new TpAspNetDbContext();
+            Models.Product product = tpAspNetDbContext.Products.Find(Id); Console.WriteLine(Id);
+            product.Nbr = Nbr;
+            product.Prix = prix;
+            product.Title = Title;
+            tpAspNetDbContext.SaveChanges();
 
-	}
+            TempData["AlertMessage"] = $"les modifications sont faites avec succuss";
+            return RedirectToAction("SellerPage");
+        }
+
+    }
 
 }
 

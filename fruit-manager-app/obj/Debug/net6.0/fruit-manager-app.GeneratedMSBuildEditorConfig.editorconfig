@@ -9,125 +9,125 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = fruit_manager_app
 build_property.RootNamespace = fruit_manager_app
-build_property.ProjectDir = C:\Users\Ahcene Benali\Desktop\fruit-manager-app\fruit-manager-app\
+build_property.ProjectDir = C:\Users\Ahcene Benali\Desktop\TP1_Technologie_de commerce electronique\fruit-manager-app\fruit-manager-app\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Ahcene Benali\Desktop\fruit-manager-app\fruit-manager-app
+build_property.MSBuildProjectDirectory = C:\Users\Ahcene Benali\Desktop\TP1_Technologie_de commerce electronique\fruit-manager-app\fruit-manager-app
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/AddClient.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/AddClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRDbGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/AddProduct.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/AddProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/AddSeller.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/AddSeller.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRTZWxsZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ClientListeFactures.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/ClientListeFactures.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDbGllbnRMaXN0ZUZhY3R1cmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ClientLogin.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/ClientLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDbGllbnRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ClientPage.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/ClientPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDbGllbnRQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/EditProfilClient.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/EditProfilClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UHJvZmlsQ2xpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/EditProfilVendeur.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/EditProfilVendeur.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UHJvZmlsVmVuZGV1ci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/Index.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/MessageC.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/MessageC.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZXNzYWdlQy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ProductsPage.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/ProductsPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0c1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/Results.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/Results.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/ResultsIndex.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/ResultsIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRzSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/SellerListeFactures.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/SellerListeFactures.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWxsZXJMaXN0ZUZhY3R1cmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/SellerLogin.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/SellerLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWxsZXJMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/SellerPage.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/SellerPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWxsZXJQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/StatClient.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/StatClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0Q2xpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Home/StatSeller.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Home/StatSeller.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0U2VsbGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Panier/Facture.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Panier/Facture.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuaWVyXEZhY3R1cmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Panier/Panier.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Panier/Panier.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuaWVyXFBhbmllci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Card.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Card.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Cardindex.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Cardindex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYXJkaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_ClientPage.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_ClientPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DbGllbnRQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Facture.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Facture.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GYWN0dXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Layout.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Panier.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Panier.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYW5pZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_SellerPage.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_SellerPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWxsZXJQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_Stat.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_Stat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ahcene Benali/Desktop/fruit-manager-app/fruit-manager-app/Views/Shared/_VProduit.cshtml]
+[C:/Users/Ahcene Benali/Desktop/TP1_Technologie_de commerce electronique/fruit-manager-app/fruit-manager-app/Views/Shared/_VProduit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WUHJvZHVpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

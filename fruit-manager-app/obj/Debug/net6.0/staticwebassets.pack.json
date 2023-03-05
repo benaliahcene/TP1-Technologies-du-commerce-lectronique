@@ -1,15 +1,15 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\css\\site.min.css",
+      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\TP1_Technologie_de commerce electronique\\fruit-manager-app\\fruit-manager-app\\wwwroot\\css\\site.min.css",
       "PackagePath": "staticwebassets\\css\\site.min.css"
     },
     {
-      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\index.html",
+      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\TP1_Technologie_de commerce electronique\\fruit-manager-app\\fruit-manager-app\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\fruit-manager-app\\fruit-manager-app\\wwwroot\\js\\site.min.js",
+      "Id": "C:\\Users\\Ahcene Benali\\Desktop\\TP1_Technologie_de commerce electronique\\fruit-manager-app\\fruit-manager-app\\wwwroot\\js\\site.min.js",
       "PackagePath": "staticwebassets\\js\\site.min.js"
     },
     {

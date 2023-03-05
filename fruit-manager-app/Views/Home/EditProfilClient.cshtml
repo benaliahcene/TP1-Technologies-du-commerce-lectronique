@@ -6,7 +6,12 @@
 @{
     Layout = "_ClientPage";
 }
-
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        alert('@TempData["AlertMessage"]');
+    </script>
+}
 @model DemoAspNet.Models.Client
 
 <h1 class="pb-3">Client - Modifier informations</h1>  
@@ -15,8 +20,8 @@
 <form asp-action="EditProfilClients">
     <div class="container p-5">
         <div class="row">
-            <div class="col"><input asp-for="Nom" type="text" class="form-control" placeholder="Nom ..." /></div>
-            <div class="col"><input asp-for="Prenom" type="text" class="form-control" placeholder="Prénom ..." /></div>
+            <div class="col"><input asp-for="Nom" type="text" class="form-control" placeholder="Nom ..." required /></div>
+            <div class="col"><input asp-for="Prenom" type="text" class="form-control" placeholder="Prénom ..." required /></div>
 @*            <div class="col"><input asp-for="Solde" type="text" class="form-control" placeholder="Solde ..." /></div>
 *@            <div class="col"><button type="submit" class="btn btn-success w-100"><i class="bi bi-search"></i>Modifier</button></div>
         </div>

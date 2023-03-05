@@ -21,14 +21,14 @@
 
 				<div class="form-group row">
 					<div class="col p-3 m-3">
-							<select asp-for="Id" class="form-select form-select-lg mb-3">
+			<select asp-for="Id" class="form-select form-select-lg mb-3" required>
 							<option value="">Choisir ...</option>
 							@foreach (Seller seller in ViewBag.Sellers)
 							{
 								<option value="@seller.Id">@seller.Nom</option>
 							}
 						</select>
-			<div class="col"><input asp-for="Mdp" type="password" class="form-control p-3 m-3" placeholder="Password ..." /></div>
+			<div class="col"><input asp-for="Mdp" type="password" class="form-control p-3 m-3" placeholder="Password ..." required /></div>
 
 						</div>
 				</div>
